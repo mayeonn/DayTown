@@ -11,6 +11,16 @@
 		D76880AE2B235CBD0038CA8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76880AD2B235CBD0038CA8A /* ContentView.swift */; };
 		D76880B02B235CBF0038CA8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D76880AF2B235CBF0038CA8A /* Assets.xcassets */; };
 		D76880B32B235CBF0038CA8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D76880B22B235CBF0038CA8A /* Preview Assets.xcassets */; };
+		D7B856D92B285B6500194493 /* GroupTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856D82B285B6500194493 /* GroupTabViewModel.swift */; };
+		D7B856DB2B285BA300194493 /* GroupTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856DA2B285BA300194493 /* GroupTabView.swift */; };
+		D7B856DD2B285BD100194493 /* ChatTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856DC2B285BD100194493 /* ChatTabView.swift */; };
+		D7B856DF2B287CD500194493 /* ChatTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856DE2B287CD500194493 /* ChatTabViewModel.swift */; };
+		D7B856E12B287D2600194493 /* MyPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E02B287D2600194493 /* MyPageTabView.swift */; };
+		D7B856E32B287D4800194493 /* MyPageTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E22B287D4800194493 /* MyPageTabViewModel.swift */; };
+		D7B856E52B287F0900194493 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E42B287F0900194493 /* CustomNavigationBar.swift */; };
+		D7B856E92B2899E400194493 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E82B2899E400194493 /* Constants.swift */; };
+		D7FA2E002B284C6500080251 /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */; };
+		D7FA2E022B284ED200080251 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2E012B284ED200080251 /* HomeTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +29,16 @@
 		D76880AD2B235CBD0038CA8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D76880AF2B235CBF0038CA8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D76880B22B235CBF0038CA8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D7B856D82B285B6500194493 /* GroupTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTabViewModel.swift; path = DayTown/Features/GroupTab/GroupTabViewModel.swift; sourceTree = SOURCE_ROOT; };
+		D7B856DA2B285BA300194493 /* GroupTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTabView.swift; sourceTree = "<group>"; };
+		D7B856DC2B285BD100194493 /* ChatTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTabView.swift; sourceTree = "<group>"; };
+		D7B856DE2B287CD500194493 /* ChatTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTabViewModel.swift; sourceTree = "<group>"; };
+		D7B856E02B287D2600194493 /* MyPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTabView.swift; sourceTree = "<group>"; };
+		D7B856E22B287D4800194493 /* MyPageTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTabViewModel.swift; sourceTree = "<group>"; };
+		D7B856E42B287F0900194493 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		D7B856E82B2899E400194493 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
+		D7FA2E012B284ED200080251 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +71,13 @@
 		D76880AA2B235CBD0038CA8A /* DayTown */ = {
 			isa = PBXGroup;
 			children = (
+				D7FA2E072B2852C200080251 /* Extensions */,
+				D7FA2E032B28527100080251 /* Features */,
+				D7FA2DF42B276B2B00080251 /* Views */,
+				D7FA2DEF2B276ADB00080251 /* Models */,
+				D7CE4ACE2B258B4C000206F4 /* ViewModels */,
 				D76880AB2B235CBD0038CA8A /* DayTownApp.swift */,
-				D76880AD2B235CBD0038CA8A /* ContentView.swift */,
+				D7B856E82B2899E400194493 /* Constants.swift */,
 				D76880AF2B235CBF0038CA8A /* Assets.xcassets */,
 				D76880B12B235CBF0038CA8A /* Preview Content */,
 			);
@@ -65,6 +90,83 @@
 				D76880B22B235CBF0038CA8A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D7B856D52B285B2700194493 /* GroupTab */ = {
+			isa = PBXGroup;
+			children = (
+				D7B856D82B285B6500194493 /* GroupTabViewModel.swift */,
+				D7B856DA2B285BA300194493 /* GroupTabView.swift */,
+			);
+			path = GroupTab;
+			sourceTree = "<group>";
+		};
+		D7B856D62B285B2F00194493 /* ChatTab */ = {
+			isa = PBXGroup;
+			children = (
+				D7B856DE2B287CD500194493 /* ChatTabViewModel.swift */,
+				D7B856DC2B285BD100194493 /* ChatTabView.swift */,
+			);
+			path = ChatTab;
+			sourceTree = "<group>";
+		};
+		D7B856D72B285B3C00194493 /* MyPageTab */ = {
+			isa = PBXGroup;
+			children = (
+				D7B856E22B287D4800194493 /* MyPageTabViewModel.swift */,
+				D7B856E02B287D2600194493 /* MyPageTabView.swift */,
+			);
+			path = MyPageTab;
+			sourceTree = "<group>";
+		};
+		D7CE4ACE2B258B4C000206F4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D7FA2DEF2B276ADB00080251 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D7FA2DF42B276B2B00080251 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D76880AD2B235CBD0038CA8A /* ContentView.swift */,
+				D7B856E42B287F0900194493 /* CustomNavigationBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7FA2E032B28527100080251 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D7FA2E062B28529300080251 /* HomeTab */,
+				D7B856D72B285B3C00194493 /* MyPageTab */,
+				D7B856D62B285B2F00194493 /* ChatTab */,
+				D7B856D52B285B2700194493 /* GroupTab */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D7FA2E062B28529300080251 /* HomeTab */ = {
+			isa = PBXGroup;
+			children = (
+				D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */,
+				D7FA2E012B284ED200080251 /* HomeTabView.swift */,
+			);
+			path = HomeTab;
+			sourceTree = "<group>";
+		};
+		D7FA2E072B2852C200080251 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +239,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B856E52B287F0900194493 /* CustomNavigationBar.swift in Sources */,
+				D7B856E32B287D4800194493 /* MyPageTabViewModel.swift in Sources */,
+				D7B856D92B285B6500194493 /* GroupTabViewModel.swift in Sources */,
 				D76880AE2B235CBD0038CA8A /* ContentView.swift in Sources */,
+				D7B856E12B287D2600194493 /* MyPageTabView.swift in Sources */,
+				D7B856DB2B285BA300194493 /* GroupTabView.swift in Sources */,
+				D7FA2E022B284ED200080251 /* HomeTabView.swift in Sources */,
 				D76880AC2B235CBD0038CA8A /* DayTownApp.swift in Sources */,
+				D7B856DF2B287CD500194493 /* ChatTabViewModel.swift in Sources */,
+				D7B856DD2B285BD100194493 /* ChatTabView.swift in Sources */,
+				D7FA2E002B284C6500080251 /* HomeTabViewModel.swift in Sources */,
+				D7B856E92B2899E400194493 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
