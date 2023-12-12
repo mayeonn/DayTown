@@ -19,6 +19,8 @@
 		D7B856E32B287D4800194493 /* MyPageTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E22B287D4800194493 /* MyPageTabViewModel.swift */; };
 		D7B856E52B287F0900194493 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E42B287F0900194493 /* CustomNavigationBar.swift */; };
 		D7B856E92B2899E400194493 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E82B2899E400194493 /* Constants.swift */; };
+		D7B856EB2B28A0C500194493 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856EA2B28A0C500194493 /* WeekView.swift */; };
+		D7B856ED2B28ACDA00194493 /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */; };
 		D7FA2E002B284C6500080251 /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */; };
 		D7FA2E022B284ED200080251 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2E012B284ED200080251 /* HomeTabView.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +39,8 @@
 		D7B856E22B287D4800194493 /* MyPageTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTabViewModel.swift; sourceTree = "<group>"; };
 		D7B856E42B287F0900194493 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		D7B856E82B2899E400194493 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D7B856EA2B28A0C500194493 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		D7FA2E012B284ED200080251 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +126,7 @@
 		D7CE4ACE2B258B4C000206F4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			children = (
 				D76880AD2B235CBD0038CA8A /* ContentView.swift */,
 				D7B856E42B287F0900194493 /* CustomNavigationBar.swift */,
+				D7B856EA2B28A0C500194493 /* WeekView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,7 +255,9 @@
 				D76880AC2B235CBD0038CA8A /* DayTownApp.swift in Sources */,
 				D7B856DF2B287CD500194493 /* ChatTabViewModel.swift in Sources */,
 				D7B856DD2B285BD100194493 /* ChatTabView.swift in Sources */,
+				D7B856EB2B28A0C500194493 /* WeekView.swift in Sources */,
 				D7FA2E002B284C6500080251 /* HomeTabViewModel.swift in Sources */,
+				D7B856ED2B28ACDA00194493 /* WeekViewModel.swift in Sources */,
 				D7B856E92B2899E400194493 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
