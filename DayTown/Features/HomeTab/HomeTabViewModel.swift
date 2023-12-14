@@ -2,22 +2,18 @@ import SwiftUI
 import Combine
 
 class HomeTabViewModel: ObservableObject {
-    @Published var pickedDate: String = "Initial Content"
+    @Published var weekDragOffset: CGSize = CGSize()
     
     private var cancellables: Set<AnyCancellable> = []
 
-    func fetchData() {
-        Future<String, Never> { promise in
+    func setWeekDragOffset(_ size: CGSize) {
+        Future<CGSize, Never> { promise in
             DispatchQueue.global().async {
-                promise(.success("picked date"))
+                promise(.success(size))
             }
         }
         .receive(on: DispatchQueue.main)
-        .assign(to: \.pickedDate, on: self)
+        .assign(to: \.weekDragOffset, on: self)
         .store(in: &cancellables)
     }
-}
-
-#Preview {
-    ContentView()
 }

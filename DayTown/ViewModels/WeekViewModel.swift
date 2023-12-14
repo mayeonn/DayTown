@@ -2,18 +2,23 @@ import SwiftUI
 import Combine
 
 class WeekViewModel: ObservableObject {
-    private let today = Date()
-    private let calendar = Calendar.current
-    var startOfWeek = Date()
-    
-    @Published var pickedDate: String = "Initial Content"
     @Published var week: [String] = []
+    @Published var pickedDate: Date = Date()
+    @Published var pickedDateIdx: Int = 0
     
     private var cancellables: Set<AnyCancellable> = []
     
-    
-    func initStartOfWeek() {
-        startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
+    private var today = Date()
+    private let calendar = Calendar.current
+    var startOfWeek = Date()
+
+    func initWeek() {
+        let localTimeZone = TimeZone.current
+        today = today.addingTimeInterval(TimeInterval(localTimeZone.secondsFromGMT(for: today)))
+        pickedDateIdx = calendar.component(.weekday, from: today) - 1
+        let daysToSubtract = (pickedDateIdx - calendar.firstWeekday + 7) % 7
+        startOfWeek = calendar.date(byAdding: .day, value: -daysToSubtract, to: today)!
+        
         calculateWeek()
     }
     
@@ -26,15 +31,15 @@ class WeekViewModel: ObservableObject {
     
     
     func calculateWeek() {
-        var weekDates: [Date] = []
+        var weekDatesString: [String] = []
         
-        (1...7).forEach{ day in
+        (0...6).forEach{ day in
             if let weekDate = calendar.date(byAdding: .day, value: day, to: startOfWeek){
-                weekDates.append(weekDate)
+                let str = dateToString(date: weekDate)
+                weekDatesString.append(str)
             }
         }
         
-        let weekDatesString = dateToString(weekDate: weekDates)
         Future<[String], Never> { promise in
             DispatchQueue.main.async {
                 promise(.success(weekDatesString))
@@ -46,13 +51,25 @@ class WeekViewModel: ObservableObject {
     }
     
     
-    func dateToString(weekDate: [Date]) -> [String] {
-        var formattedDates: [String] = []
+    func dateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = calendar.timeZone
         dateFormatter.dateFormat = "M/d"
-        for date in weekDate {
-            formattedDates.append(dateFormatter.string(from: date))
-        }
-        return formattedDates
+        return dateFormatter.string(from: date)
     }
+    
+    func updatePickedDate(index: Int) {
+        Future<Date, Never> { promise in
+            DispatchQueue.main.async {
+                if let newPickedDate = self.calendar.date(byAdding: .day, value: index, to: self.startOfWeek) {
+                    promise(.success(newPickedDate))
+                }
+            }
+        }
+        .receive(on: DispatchQueue.main)
+        .assign(to: \.pickedDate, on: self)
+        .store(in: &cancellables)
+    }
+    
+            
 }

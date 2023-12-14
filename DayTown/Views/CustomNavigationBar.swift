@@ -6,7 +6,7 @@ struct CustomNavigationBarTitle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .navigation) {
                     Text(title)
                         .font(.system(size: 24))
                 }

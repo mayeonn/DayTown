@@ -12,17 +12,25 @@ struct WeekView: View {
                         .tint(.gray)
                     ZStack {
                         Circle()
-                            .foregroundColor(.white)
+                            .foregroundColor(viewModel.pickedDateIdx==index ? .blue : .white)
                         Text(K.weekDays[index])
                             .font(.system(size: 16))
+                            .foregroundStyle(viewModel.pickedDateIdx==index ? .white : index==0 ? .red : index==6 ? .blue : .black)
                     }
+                    .gesture(
+                        TapGesture()
+                            .onEnded{ _ in
+                                viewModel.updatePickedDate(index: index)
+                                viewModel.pickedDateIdx = index
+                            }
+                    )
                 }
             }
         }
         .padding(8)
         .background(Rectangle().fill(.gray.opacity(0.2)))
         .onAppear{
-            viewModel.initStartOfWeek()
+            viewModel.initWeek()
         }
     }
 }

@@ -1,40 +1,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var homeTabViewModel = HomeTabViewModel()
-    @StateObject private var groupTabViewModel = GroupTabViewModel()
-    @StateObject private var chatTabViewModel = ChatTabViewModel()
-    @StateObject private var myPageTabViewModel = MyPageTabViewModel()
+    @StateObject private var viewModel = ContentViewModel()
     
     var body: some View {
-        
-        TabView{
-            NavigationView {
-                HomeTabView(viewModel: homeTabViewModel)
-            }
-            .tabItem {
-                Image(systemName: "house.fill")
-            }
-            
-            NavigationView {
-                GroupTabView(viewModel: groupTabViewModel)
-            }
-            .tabItem {
-                Image(systemName: "person.2.fill")
-            }
-            NavigationView {
-                ChatTabView(viewModel: chatTabViewModel)
-            }
-            .tabItem {
-                Image(systemName: "message.fill")
-            }
-            NavigationView {
-                MyPageTabView(viewModel: myPageTabViewModel)
-            }
-            .tabItem {
-                Image(systemName: "person.circle.fill")
+        TabView(selection: $viewModel.tabSelection){
+            ForEach(0...3, id: \.self) { index in
+                NavigationView {
+                    switch index {
+                    case 0:
+                        HomeTabView(viewModel: viewModel.homeTabViewModel)
+                    case 1:
+                        GroupTabView(viewModel: viewModel.groupTabViewModel)
+                    case 2:
+                        ChatTabView(viewModel: viewModel.chatTabViewModel)
+                    default:
+                        MyPageTabView(viewModel: viewModel.myPageTabViewModel)
+                    }
+                }
+                .tag(index)
+                .tabItem {
+                    Image(systemName: K.tabItemIcons[index])
+                }
+                .ignoresSafeArea()
             }
         }
+        .ignoresSafeArea()
     }
 }
 
