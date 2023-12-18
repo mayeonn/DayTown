@@ -3,9 +3,6 @@ import SwiftUI
 struct HomeTabView: View {
     @ObservedObject var viewModel: HomeTabViewModel
     @ObservedObject var weekViewModel: WeekViewModel
-    @State private var showAlert = false
-    @State private var todoTitle: String = ""
-    @State private var todoMemo: String = ""
     
     init() {
         self.viewModel = HomeTabViewModel()
@@ -14,7 +11,7 @@ struct HomeTabView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             WeekView(viewModel: weekViewModel)
                 .offset(viewModel.weekDragOffset)
                 .gesture(
@@ -33,34 +30,23 @@ struct HomeTabView: View {
                             }
                         }
                 )
-            List (viewModel.todoList) { todo in
-                Text(todo.title)
-            }
-            .listStyle(.grouped)
-            .background(.red)
             
-            Button(
-                action: {
-                    showAlert.toggle()
-                },
-                label: {
-                    Image(systemName: "plus.circle")
-                        .font(.system(size: 36))
+            List {
+                Section(footer: AddTodoButton(homeTabViewModel: viewModel, weekViewModel: weekViewModel)){
+                    ForEach(viewModel.todoList, id: \.self) { todo in
+                        TodoListCellView(viewModel: viewModel, todoItem: todo)
+                    }
+                    .onMove(perform: { indices, newOffset in
+                        viewModel.moveTodoCell()
+                    })
+                    .onDelete { index in
+                        viewModel.deleteTodo(viewModel.todoList[index.first!])
+                        viewModel.getTodoList(on: weekViewModel.pickedDate)
+                    }
                 }
-            )
-            .alert(Text("Todo 추가"), isPresented: $showAlert) {
-                Button("취소") {
-                    todoTitle = ""
-                    todoMemo = ""
-                }
-                Button("추가") {
-                    viewModel.addTodo(title: todoTitle, memo: todoMemo, date: weekViewModel.pickedDate)
-                    todoTitle = ""
-                    todoMemo = ""
-                }
-                TextField("title", text: $todoTitle)
-                TextField("memo", text: $todoMemo)
+                .listSectionSeparator(.hidden)
             }
+            .listStyle(.plain)
             
             
             .customNavigationBarTitle(title: "ToDo")

@@ -50,13 +50,40 @@ class HomeTabViewModel: ObservableObject {
         }
     }
     
-    func deleteTodo(id: ObjectId) {
+    func deleteTodo(_ todo: Todo) {
         try! realm.write {
-            let objectToDelete = realm.objects(Todo.self).filter("objectId == 'id'").first
+            let todoItem = realm.objects(Todo.self).filter{
+                $0.id == todo.id
+            }.first
             
-            if let objectToDelete = objectToDelete {
-                realm.delete(objectToDelete)
+            if let todoItemToDelete = todoItem {
+                realm.delete(todoItemToDelete)
             }
         }
+    }
+    
+    func toggleCompletion(for todo: Todo) {
+        let todoItem = realm.objects(Todo.self).where{
+            $0.id == todo.id
+        }.first!
+        
+        try! realm.write {
+            todoItem.isCompleted.toggle()
+        }
+    }
+    
+    func editTodo(for todo: Todo, title: String, memo: String?) {
+        let todoItem = realm.objects(Todo.self).where {
+            $0.id == todo.id
+        }.first!
+        
+        try! realm.write {
+            todoItem.title = title
+            todoItem.memo = memo
+        }
+    }
+    
+    func moveTodoCell () {
+        
     }
 }
