@@ -1,21 +1,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = ContentViewModel()
+    @State private var tabSelection: Int = 0
     
     var body: some View {
-        TabView(selection: $viewModel.tabSelection){
-            ForEach(0...3, id: \.self) { index in
+        TabView(selection: $tabSelection){
+            ForEach(0..<3, id: \.self) { index in
                 NavigationView {
                     switch index {
                     case 0:
-                        HomeTabView(viewModel: viewModel.homeTabViewModel)
+                        HomeTabView()
                     case 1:
-                        GroupTabView(viewModel: viewModel.groupTabViewModel)
+                        GroupTabView()
                     case 2:
-                        ChatTabView(viewModel: viewModel.chatTabViewModel)
+                        ChatTabView()
                     default:
-                        MyPageTabView(viewModel: viewModel.myPageTabViewModel)
+                        MyPageTabView()
                     }
                 }
                 .tag(index)

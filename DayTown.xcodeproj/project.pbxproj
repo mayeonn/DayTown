@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC3A46BE927C5476561CCC64 /* Pods_DayTown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AED681F1EE31D9B6F06B3D /* Pods_DayTown.framework */; };
+		D754FFF02B2CBF21005E89F1 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754FFEF2B2CBF21005E89F1 /* TodoModel.swift */; };
 		D76880AC2B235CBD0038CA8A /* DayTownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76880AB2B235CBD0038CA8A /* DayTownApp.swift */; };
 		D76880AE2B235CBD0038CA8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76880AD2B235CBD0038CA8A /* ContentView.swift */; };
 		D76880B02B235CBF0038CA8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D76880AF2B235CBF0038CA8A /* Assets.xcassets */; };
@@ -21,12 +23,16 @@
 		D7B856E92B2899E400194493 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E82B2899E400194493 /* Constants.swift */; };
 		D7B856EB2B28A0C500194493 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856EA2B28A0C500194493 /* WeekView.swift */; };
 		D7B856ED2B28ACDA00194493 /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */; };
-		D7DE4E122B2B2BAB00320A04 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE4E112B2B2BAB00320A04 /* ContentViewModel.swift */; };
+		D7E022AC2B2F0FF5001CE2DD /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E022AB2B2F0FF5001CE2DD /* RealmManager.swift */; };
 		D7FA2E002B284C6500080251 /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */; };
 		D7FA2E022B284ED200080251 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2E012B284ED200080251 /* HomeTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35AED681F1EE31D9B6F06B3D /* Pods_DayTown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DayTown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		803854F0C2C95D57BF45FCD6 /* Pods-DayTown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayTown.debug.xcconfig"; path = "Target Support Files/Pods-DayTown/Pods-DayTown.debug.xcconfig"; sourceTree = "<group>"; };
+		B32EBE82758E68A0A21D998D /* Pods-DayTown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayTown.release.xcconfig"; path = "Target Support Files/Pods-DayTown/Pods-DayTown.release.xcconfig"; sourceTree = "<group>"; };
+		D754FFEF2B2CBF21005E89F1 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 		D76880A82B235CBD0038CA8A /* DayTown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayTown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76880AB2B235CBD0038CA8A /* DayTownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTownApp.swift; sourceTree = "<group>"; };
 		D76880AD2B235CBD0038CA8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,7 +48,7 @@
 		D7B856E82B2899E400194493 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7B856EA2B28A0C500194493 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
-		D7DE4E112B2B2BAB00320A04 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		D7E022AB2B2F0FF5001CE2DD /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		D7FA2E012B284ED200080251 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,17 +58,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC3A46BE927C5476561CCC64 /* Pods_DayTown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4EA1224CE8CFC907EC4FA68 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				803854F0C2C95D57BF45FCD6 /* Pods-DayTown.debug.xcconfig */,
+				B32EBE82758E68A0A21D998D /* Pods-DayTown.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C67F26A73227460882D9D145 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35AED681F1EE31D9B6F06B3D /* Pods_DayTown.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D768809F2B235CBD0038CA8A = {
 			isa = PBXGroup;
 			children = (
 				D76880AA2B235CBD0038CA8A /* DayTown */,
 				D76880A92B235CBD0038CA8A /* Products */,
+				A4EA1224CE8CFC907EC4FA68 /* Pods */,
+				C67F26A73227460882D9D145 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +109,7 @@
 				D7FA2DEF2B276ADB00080251 /* Models */,
 				D7CE4ACE2B258B4C000206F4 /* ViewModels */,
 				D76880AB2B235CBD0038CA8A /* DayTownApp.swift */,
+				D7E022AB2B2F0FF5001CE2DD /* RealmManager.swift */,
 				D7B856E82B2899E400194493 /* Constants.swift */,
 				D76880AF2B235CBF0038CA8A /* Assets.xcassets */,
 				D76880B12B235CBF0038CA8A /* Preview Content */,
@@ -129,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */,
-				D7DE4E112B2B2BAB00320A04 /* ContentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -137,6 +163,7 @@
 		D7FA2DEF2B276ADB00080251 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D754FFEF2B2CBF21005E89F1 /* TodoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,9 +212,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D76880B62B235CBF0038CA8A /* Build configuration list for PBXNativeTarget "DayTown" */;
 			buildPhases = (
+				3179CE2569101C19160C21A4 /* [CP] Check Pods Manifest.lock */,
 				D76880A42B235CBD0038CA8A /* Sources */,
 				D76880A52B235CBD0038CA8A /* Frameworks */,
 				D76880A62B235CBD0038CA8A /* Resources */,
+				FBA1EBA4AAC1276331D7121D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -243,16 +272,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3179CE2569101C19160C21A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DayTown-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBA1EBA4AAC1276331D7121D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DayTown/Pods-DayTown-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DayTown/Pods-DayTown-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DayTown/Pods-DayTown-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D76880A42B235CBD0038CA8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D7B856E52B287F0900194493 /* CustomNavigationBar.swift in Sources */,
+				D754FFF02B2CBF21005E89F1 /* TodoModel.swift in Sources */,
 				D7B856E32B287D4800194493 /* MyPageTabViewModel.swift in Sources */,
 				D7B856D92B285B6500194493 /* GroupTabViewModel.swift in Sources */,
 				D76880AE2B235CBD0038CA8A /* ContentView.swift in Sources */,
 				D7B856E12B287D2600194493 /* MyPageTabView.swift in Sources */,
+				D7E022AC2B2F0FF5001CE2DD /* RealmManager.swift in Sources */,
 				D7B856DB2B285BA300194493 /* GroupTabView.swift in Sources */,
 				D7FA2E022B284ED200080251 /* HomeTabView.swift in Sources */,
 				D76880AC2B235CBD0038CA8A /* DayTownApp.swift in Sources */,
@@ -262,7 +335,6 @@
 				D7FA2E002B284C6500080251 /* HomeTabViewModel.swift in Sources */,
 				D7B856ED2B28ACDA00194493 /* WeekViewModel.swift in Sources */,
 				D7B856E92B2899E400194493 /* Constants.swift in Sources */,
-				D7DE4E122B2B2BAB00320A04 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +378,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -369,7 +441,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -390,6 +462,7 @@
 		};
 		D76880B72B235CBF0038CA8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 803854F0C2C95D57BF45FCD6 /* Pods-DayTown.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -419,6 +492,7 @@
 		};
 		D76880B82B235CBF0038CA8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B32EBE82758E68A0A21D998D /* Pods-DayTown.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

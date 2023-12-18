@@ -3,6 +3,10 @@ import SwiftUI
 struct MyPageTabView: View {
     @ObservedObject var viewModel: MyPageTabViewModel
     
+    init() {
+        self.viewModel = MyPageTabViewModel()
+    }
+    
     var body: some View {
         VStack {
             Text(viewModel.content)

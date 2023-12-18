@@ -3,21 +3,39 @@ import Combine
 
 class WeekViewModel: ObservableObject {
     @Published var week: [String] = []
-    @Published var pickedDate: Date = Date()
+    @Published var pickedDate: String = ""
     @Published var pickedDateIdx: Int = 0
     
     private var cancellables: Set<AnyCancellable> = []
     
-    private var today = Date()
-    private let calendar = Calendar.current
+    var today = Date()
+    private var calendar = Calendar.current
     var startOfWeek = Date()
-
+    let dateFormatter = DateFormatter()
+    
+    weak var homeTabViewModel: HomeTabViewModel?
+    init() {
+        $pickedDate
+            .sink { [weak self] date in
+                // WeekViewModel의 pickedDate가 변경될 때마다 HomeTabViewModel의 getTodoList 함수 호출
+                self?.homeTabViewModel?.getTodoList(on: date)
+            }
+            .store(in: &cancellables)
+    }
+    
     func initWeek() {
         let localTimeZone = TimeZone.current
-        today = today.addingTimeInterval(TimeInterval(localTimeZone.secondsFromGMT(for: today)))
-        pickedDateIdx = calendar.component(.weekday, from: today) - 1
-        let daysToSubtract = (pickedDateIdx - calendar.firstWeekday + 7) % 7
+        dateFormatter.timeZone = localTimeZone
+        dateFormatter.dateFormat = "M/d"
+        
+        let localizedToday = today.addingTimeInterval(TimeInterval(localTimeZone.secondsFromGMT(for: today)))
+        today = calendar.startOfDay(for: localizedToday)
+        
+        let todayWeekDay = calendar.component(.weekday, from: today) - calendar.firstWeekday
+        let daysToSubtract = (todayWeekDay - calendar.firstWeekday + 7) % 7
         startOfWeek = calendar.date(byAdding: .day, value: -daysToSubtract, to: today)!
+        pickedDate = dateToString(date: today)
+        pickedDateIdx = todayWeekDay - 1
         
         calculateWeek()
     }
@@ -52,17 +70,16 @@ class WeekViewModel: ObservableObject {
     
     
     func dateToString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = calendar.timeZone
-        dateFormatter.dateFormat = "M/d"
         return dateFormatter.string(from: date)
     }
     
     func updatePickedDate(index: Int) {
-        Future<Date, Never> { promise in
+        Future<String, Never> { promise in
             DispatchQueue.main.async {
                 if let newPickedDate = self.calendar.date(byAdding: .day, value: index, to: self.startOfWeek) {
-                    promise(.success(newPickedDate))
+                    let str = self.dateToString(date: newPickedDate)
+                    promise(.success(str))
+                    print("WeekViewModel - updatePickedDate ", str)
                 }
             }
         }
@@ -70,6 +87,4 @@ class WeekViewModel: ObservableObject {
         .assign(to: \.pickedDate, on: self)
         .store(in: &cancellables)
     }
-    
-            
 }

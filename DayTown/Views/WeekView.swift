@@ -6,16 +6,20 @@ struct WeekView: View {
     var body: some View {
         HStack(spacing: 8) {
             ForEach(Array(viewModel.week.enumerated()), id: \.element) { index, item in
+                let stringToday = viewModel.dateToString(date: viewModel.today)
+                let isPickedDate: Bool = viewModel.pickedDate == item
+                let isToday: Bool = stringToday == item
                 VStack(spacing: 4) {
                     Text(item)
                         .font(.system(size: 12))
                         .tint(.gray)
+                        .fontWeight(isToday ? .bold : .regular)
                     ZStack {
                         Circle()
-                            .foregroundColor(viewModel.pickedDateIdx==index ? .blue : .white)
+                            .foregroundColor(isPickedDate ? .blue : .white)
                         Text(K.weekDays[index])
                             .font(.system(size: 16))
-                            .foregroundStyle(viewModel.pickedDateIdx==index ? .white : index==0 ? .red : index==6 ? .blue : .black)
+                            .foregroundStyle(isPickedDate ? .white : index==6 ? .red : index==5 ? .blue : .black)
                     }
                     .gesture(
                         TapGesture()

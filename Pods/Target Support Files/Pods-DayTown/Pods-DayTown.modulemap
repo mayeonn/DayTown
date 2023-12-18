@@ -1,0 +1,6 @@
+framework module Pods_DayTown {
+  umbrella header "Pods-DayTown-umbrella.h"
+
+  export *
+  module * { export * }
+}
