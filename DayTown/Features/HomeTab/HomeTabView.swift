@@ -7,7 +7,7 @@ struct HomeTabView: View {
     init() {
         self.viewModel = HomeTabViewModel()
         self.weekViewModel = WeekViewModel()
-        self.weekViewModel.homeTabViewModel = viewModel
+//        self.weekViewModel.homeTabViewModel = viewModel
     }
     
     var body: some View {
@@ -39,14 +39,16 @@ struct HomeTabView: View {
                     .onMove(perform: { indices, newOffset in
                         viewModel.moveTodoCell()
                     })
-                    .onDelete { index in
-                        viewModel.deleteTodo(viewModel.todoList[index.first!])
-                        viewModel.getTodoList(on: weekViewModel.pickedDate)
+                    .onDelete { indexSet in
+                        viewModel.deleteTodo(viewModel.todoList[indexSet.first!])
                     }
                 }
                 .listSectionSeparator(.hidden)
             }
             .listStyle(.plain)
+            .onAppear {
+                //viewModel.getTodoList(on: weekViewModel.pickedDate)
+            }
             
             
             .customNavigationBarTitle(title: "ToDo")

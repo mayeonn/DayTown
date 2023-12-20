@@ -13,15 +13,15 @@ class WeekViewModel: ObservableObject {
     var startOfWeek = Date()
     let dateFormatter = DateFormatter()
     
-    weak var homeTabViewModel: HomeTabViewModel?
-    init() {
-        $pickedDate
-            .sink { [weak self] date in
-                // WeekViewModel의 pickedDate가 변경될 때마다 HomeTabViewModel의 getTodoList 함수 호출
-                self?.homeTabViewModel?.getTodoList(on: date)
-            }
-            .store(in: &cancellables)
-    }
+//    weak var homeTabViewModel: HomeTabViewModel?
+//    init() {
+//        // pickedDate의 변경 감지
+//        $pickedDate
+//            .sink { [weak self] date in
+//                self?.homeTabViewModel?.pickedDate = date
+//            }
+//            .store(in: &cancellables)
+//    }
     
     func initWeek() {
         let localTimeZone = TimeZone.current
@@ -79,7 +79,6 @@ class WeekViewModel: ObservableObject {
                 if let newPickedDate = self.calendar.date(byAdding: .day, value: index, to: self.startOfWeek) {
                     let str = self.dateToString(date: newPickedDate)
                     promise(.success(str))
-                    print("WeekViewModel - updatePickedDate ", str)
                 }
             }
         }

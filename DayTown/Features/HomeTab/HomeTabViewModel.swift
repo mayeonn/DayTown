@@ -9,6 +9,30 @@ class HomeTabViewModel: ObservableObject {
     private let realm = RealmManager.realm
     
     private var cancellables: Set<AnyCancellable> = []
+    private var notificationToken: NotificationToken?
+    
+    init() {        
+        let results = realm.objects(Todo.self)
+            .filter("date == %@", "12/18")
+            .sorted(byKeyPath: "date")
+        
+        // results의 변경 감지
+        notificationToken = results.observe { [weak self] changes in
+            guard let self = self else {return}
+            switch changes {
+            case .initial, .update:
+                // Result를 Todo로 mapping
+                self.todoList = Array(results).map{ Todo(value: $0) }
+                // View에 변경을 알림
+                self.objectWillChange.send()
+            case .error(let error):
+                print("Error observing changes: \(error)")
+            }
+        }
+    }
+    deinit {
+        notificationToken?.invalidate()
+    }
     
     func setWeekDragOffset(_ size: CGSize) {
         Future<CGSize, Never> { promise in
@@ -19,25 +43,6 @@ class HomeTabViewModel: ObservableObject {
         .receive(on: DispatchQueue.main)
         .assign(to: \.weekDragOffset, on: self)
         .store(in: &cancellables)
-    }
-
-    func getTodoList(on pickedDate: String){
-        let todo = realm.objects(Todo.self)
-            .filter("date == %@", pickedDate)
-            .sorted(byKeyPath: "date")
-        
-        todo
-            .collectionPublisher
-            .map{ Array($0) }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-            .sink(
-                receiveCompletion: { completion in },
-                receiveValue: { todo in
-                    self.todoList = todo
-                }
-            )
-            .store(in: &cancellables)
     }
     
     func addTodo(title: String, memo: String, date: String) {
@@ -52,7 +57,7 @@ class HomeTabViewModel: ObservableObject {
     
     func deleteTodo(_ todo: Todo) {
         try! realm.write {
-            let todoItem = realm.objects(Todo.self).filter{
+            let todoItem = realm.objects(Todo.self).filter {
                 $0.id == todo.id
             }.first
             
