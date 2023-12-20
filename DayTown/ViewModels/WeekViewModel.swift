@@ -2,9 +2,9 @@ import SwiftUI
 import Combine
 
 class WeekViewModel: ObservableObject {
-    @Published var week: [String] = []
     @Published var pickedDate: String = ""
     @Published var pickedDateIdx: Int = 0
+    @Published var week: [String] = []
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -12,16 +12,6 @@ class WeekViewModel: ObservableObject {
     private var calendar = Calendar.current
     var startOfWeek = Date()
     let dateFormatter = DateFormatter()
-    
-//    weak var homeTabViewModel: HomeTabViewModel?
-//    init() {
-//        // pickedDate의 변경 감지
-//        $pickedDate
-//            .sink { [weak self] date in
-//                self?.homeTabViewModel?.pickedDate = date
-//            }
-//            .store(in: &cancellables)
-//    }
     
     func initWeek() {
         let localTimeZone = TimeZone.current

@@ -2,7 +2,6 @@ import SwiftUI
 
 struct AddTodoButton: View {
     @ObservedObject var homeTabViewModel: HomeTabViewModel
-    @ObservedObject var weekViewModel: WeekViewModel
     @State private var showAlert = false
     @State private var todoTitle: String = ""
     @State private var todoMemo: String = ""
@@ -27,7 +26,7 @@ struct AddTodoButton: View {
                     todoMemo = ""
                 }
                 Button("추가") {
-                    homeTabViewModel.addTodo(title: todoTitle, memo: todoMemo, date: weekViewModel.pickedDate)
+                    homeTabViewModel.addTodo(title: todoTitle, memo: todoMemo)
                     todoTitle = ""
                     todoMemo = ""
                 }

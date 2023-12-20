@@ -2,17 +2,14 @@ import SwiftUI
 
 struct HomeTabView: View {
     @ObservedObject var viewModel: HomeTabViewModel
-    @ObservedObject var weekViewModel: WeekViewModel
     
     init() {
         self.viewModel = HomeTabViewModel()
-        self.weekViewModel = WeekViewModel()
-//        self.weekViewModel.homeTabViewModel = viewModel
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            WeekView(viewModel: weekViewModel)
+            WeekView(viewModel: viewModel.weekViewModel)
                 .offset(viewModel.weekDragOffset)
                 .gesture(
                     DragGesture()
@@ -22,9 +19,9 @@ struct HomeTabView: View {
                         .onEnded { gesture in
                             withAnimation(.linear(duration: 1)) {
                                 if gesture.translation.width < -100 {
-                                    weekViewModel.updateStartOfWeek(by: 1)
+                                    viewModel.weekViewModel.updateStartOfWeek(by: 1)
                                 } else if gesture.translation.width > 100 {
-                                    weekViewModel.updateStartOfWeek(by: -1)
+                                    viewModel.weekViewModel.updateStartOfWeek(by: -1)
                                 }
                                 viewModel.setWeekDragOffset(CGSize())
                             }
@@ -32,7 +29,7 @@ struct HomeTabView: View {
                 )
             
             List {
-                Section(footer: AddTodoButton(homeTabViewModel: viewModel, weekViewModel: weekViewModel)){
+                Section(footer: AddTodoButton(homeTabViewModel: viewModel)){
                     ForEach(viewModel.todoList, id: \.self) { todo in
                         TodoListCellView(viewModel: viewModel, todoItem: todo)
                     }
@@ -45,10 +42,8 @@ struct HomeTabView: View {
                 }
                 .listSectionSeparator(.hidden)
             }
+            
             .listStyle(.plain)
-            .onAppear {
-                //viewModel.getTodoList(on: weekViewModel.pickedDate)
-            }
             
             
             .customNavigationBarTitle(title: "ToDo")

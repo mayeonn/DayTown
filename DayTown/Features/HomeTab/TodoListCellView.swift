@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TodoListCellView: View {
     @ObservedObject var homeTabViewModel: HomeTabViewModel
-    var todo: Todo
+    let todo: Todo
     @State private var showAlert = false
     @State private var todoTitle: String
     @State private var todoMemo: String

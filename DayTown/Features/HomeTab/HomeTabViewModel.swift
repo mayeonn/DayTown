@@ -5,51 +5,63 @@ import RealmSwift
 class HomeTabViewModel: ObservableObject {
     @Published var todoList: [Todo] = []
     @Published var weekDragOffset: CGSize = CGSize()
+    @Published var weekViewModel: WeekViewModel
+    
     let calendar = Calendar.current
     private let realm = RealmManager.realm
     
     private var cancellables: Set<AnyCancellable> = []
     private var notificationToken: NotificationToken?
     
-    init() {        
-        let results = realm.objects(Todo.self)
-            .filter("date == %@", "12/18")
-            .sorted(byKeyPath: "date")
+    init() {
+        weekViewModel = WeekViewModel()
         
-        // results의 변경 감지
-        notificationToken = results.observe { [weak self] changes in
-            guard let self = self else {return}
-            switch changes {
-            case .initial, .update:
-                // Result를 Todo로 mapping
-                self.todoList = Array(results).map{ Todo(value: $0) }
-                // View에 변경을 알림
-                self.objectWillChange.send()
-            case .error(let error):
-                print("Error observing changes: \(error)")
+        // weekViewModel.pickedDate 변경 감지
+        weekViewModel.$pickedDate
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.setupNotificationToken()
             }
-        }
+            .store(in: &cancellables)
+        
+        setupNotificationToken()    // 초기 설정
     }
     deinit {
         notificationToken?.invalidate()
     }
     
-    func setWeekDragOffset(_ size: CGSize) {
-        Future<CGSize, Never> { promise in
-            DispatchQueue.global().async {
-                promise(.success(size))
+    private func setupNotificationToken() {
+        notificationToken?.invalidate()
+        // results의 변경 감지
+        notificationToken = realm.objects(Todo.self)
+            .filter("date == %@", weekViewModel.pickedDate)
+            .sorted(byKeyPath: "date")
+            .observe { [weak self] changes in
+                guard let self = self else {return}
+                switch changes {
+                case .initial, .update:
+                    getTodoList()
+                case .error(let error):
+                    print("Error observing changes: \(error)")
+                }
             }
-        }
-        .receive(on: DispatchQueue.main)
-        .assign(to: \.weekDragOffset, on: self)
-        .store(in: &cancellables)
     }
     
-    func addTodo(title: String, memo: String, date: String) {
+    func getTodoList() {
+        let results = realm.objects(Todo.self)
+            .filter("date == %@", weekViewModel.pickedDate)
+            .sorted(byKeyPath: "date")
+        // results를 Todo로 mapping
+        todoList = Array(results).map { Todo(value: $0) }
+        // View에 변경을 알림
+        objectWillChange.send()
+    }
+    
+    func addTodo(title: String, memo: String) {
         let newTodo = Todo()
         newTodo.title = title
         newTodo.memo = memo
-        newTodo.date = date
+        newTodo.date = weekViewModel.pickedDate
         try! realm.write {
             realm.add(newTodo)
         }
@@ -90,5 +102,17 @@ class HomeTabViewModel: ObservableObject {
     
     func moveTodoCell () {
         
+    }
+    
+    
+    func setWeekDragOffset(_ size: CGSize) {
+        Future<CGSize, Never> { promise in
+            DispatchQueue.global().async {
+                promise(.success(size))
+            }
+        }
+        .receive(on: DispatchQueue.main)
+        .assign(to: \.weekDragOffset, on: self)
+        .store(in: &cancellables)
     }
 }
