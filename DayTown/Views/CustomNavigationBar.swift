@@ -19,7 +19,3 @@ extension View {
         modifier(CustomNavigationBarTitle(title: title))
     }
 }
-
-#Preview {
-    ContentView()
-}

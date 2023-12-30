@@ -1,14 +1,13 @@
 import SwiftUI
 
 struct TodoListCellView: View {
-    @ObservedObject var homeTabViewModel: HomeTabViewModel
     let todo: Todo
     @State private var showAlert = false
     @State private var todoTitle: String
     @State private var todoMemo: String
+    @Environment(\.realm) private var realm
     
     init(viewModel: HomeTabViewModel, todoItem: Todo) {
-        homeTabViewModel = viewModel
         todo = todoItem
         todoTitle = todo.title
         todoMemo = todo.memo ?? ""
@@ -24,7 +23,11 @@ struct TodoListCellView: View {
                     .foregroundColor(todo.isCompleted ? .blue : .gray)
                     .font(.system(size: 32))
                     .onTapGesture {
-                        homeTabViewModel.toggleCompletion(for: todo)
+                        if let todoToModify = realm.object(ofType: Todo.self, forPrimaryKey: todo._id) {
+                            try! realm.write {
+                                todoToModify.isCompleted.toggle()
+                            }
+                        }
                     }
             }
             if let memoText = todo.memo {
@@ -39,7 +42,12 @@ struct TodoListCellView: View {
         .alert(Text("수정") ,isPresented: $showAlert) {
             Button("취소") {}
             Button("저장") {
-                homeTabViewModel.editTodo(for: todo, title: todoTitle, memo: todoMemo)
+                if let todoToModify = realm.object(ofType: Todo.self, forPrimaryKey: todo._id) {
+                    try! realm.write {
+                        todoToModify.title = todoTitle
+                        todoToModify.memo = todoMemo
+                    }
+                }
             }
             TextField("title", text: $todoTitle)
             TextField("memo", text: $todoMemo)

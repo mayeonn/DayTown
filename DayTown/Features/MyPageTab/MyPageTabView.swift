@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MyPageTabView: View {
     @ObservedObject var viewModel: MyPageTabViewModel
+    @State var isLoggingOut = false
     
     init() {
         self.viewModel = MyPageTabViewModel()
@@ -9,12 +10,9 @@ struct MyPageTabView: View {
     
     var body: some View {
         VStack {
-            Text(viewModel.content)
             
+            LogoutButton()
             .customNavigationBarTitle(title: "마이페이지")
-            .onAppear {
-                viewModel.fetchData()
-            }
         }
     }
 }

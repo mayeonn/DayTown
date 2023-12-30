@@ -1,19 +1,16 @@
 import SwiftUI
+import RealmSwift
 import Combine
 
-class MyPageTabViewModel: ObservableObject {
-    @Published var content: String = "Initial Content"
-    
+class MyPageTabViewModel: ObservableObject {    
     private var cancellables: Set<AnyCancellable> = []
-
-    func fetchData() {
-        Future<String, Never> { promise in
-            DispatchQueue.global().async {
-                promise(.success("Data for MyPage Tab"))
-            }
+    
+    func logout(user: User) async {
+        do {
+            try await user.logOut()
+            print("Successfully logged user out")
+        } catch {
+            print("Failed to log user out: \(error.localizedDescription)")
         }
-        .receive(on: DispatchQueue.main)
-        .assign(to: \.content, on: self)
-        .store(in: &cancellables)
     }
 }

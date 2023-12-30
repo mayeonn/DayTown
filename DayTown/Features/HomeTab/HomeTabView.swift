@@ -1,15 +1,16 @@
 import SwiftUI
+import RealmSwift
 
 struct HomeTabView: View {
+    @Environment(\.realm) private var realm
     @ObservedObject var viewModel: HomeTabViewModel
-    
-    init() {
-        self.viewModel = HomeTabViewModel()
-    }
+    @ObservedObject var weekViewModel: WeekViewModel
+    @State var user: User
+    @ObservedResults(Todo.self, sortDescriptor: SortDescriptor(keyPath: "_id", ascending: true)) var todoList
     
     var body: some View {
         VStack(spacing: 0) {
-            WeekView(viewModel: viewModel.weekViewModel)
+            WeekView(viewModel: weekViewModel)
                 .offset(viewModel.weekDragOffset)
                 .gesture(
                     DragGesture()
@@ -19,9 +20,9 @@ struct HomeTabView: View {
                         .onEnded { gesture in
                             withAnimation(.linear(duration: 1)) {
                                 if gesture.translation.width < -100 {
-                                    viewModel.weekViewModel.updateStartOfWeek(by: 1)
+                                    weekViewModel.updateStartOfWeek(by: 1)
                                 } else if gesture.translation.width > 100 {
-                                    viewModel.weekViewModel.updateStartOfWeek(by: -1)
+                                    weekViewModel.updateStartOfWeek(by: -1)
                                 }
                                 viewModel.setWeekDragOffset(CGSize())
                             }
@@ -29,28 +30,19 @@ struct HomeTabView: View {
                 )
             
             List {
-                Section(footer: AddTodoButton(homeTabViewModel: viewModel)){
-                    ForEach(viewModel.todoList, id: \.self) { todo in
+                Section(footer: AddTodoButton(date: weekViewModel.pickedDate, user: user)){
+                    ForEach(todoList.filter {$0.date == weekViewModel.pickedDate}) { todo in
                         TodoListCellView(viewModel: viewModel, todoItem: todo)
                     }
-                    .onMove(perform: { indices, newOffset in
-                        viewModel.moveTodoCell()
-                    })
-                    .onDelete { indexSet in
-                        viewModel.deleteTodo(viewModel.todoList[indexSet.first!])
-                    }
+                    .onDelete(perform: $todoList.remove)
+                    
                 }
                 .listSectionSeparator(.hidden)
             }
-            
             .listStyle(.plain)
             
             
             .customNavigationBarTitle(title: "ToDo")
         }
     }
-}
-
-#Preview {
-    ContentView()
 }
