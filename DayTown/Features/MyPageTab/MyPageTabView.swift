@@ -10,8 +10,7 @@ struct MyPageTabView: View {
     
     var body: some View {
         VStack {
-            
-            LogoutButton()
+            LogoutButton(myPageTabViewModel: viewModel)
             .customNavigationBarTitle(title: "마이페이지")
         }
     }

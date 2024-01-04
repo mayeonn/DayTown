@@ -65,6 +65,7 @@
 		D7B856E82B2899E400194493 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7B856EA2B28A0C500194493 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
+		D7CE74A12B469635004A0D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		D7FA2E012B284ED200080251 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +129,7 @@
 		D76880AA2B235CBD0038CA8A /* DayTown */ = {
 			isa = PBXGroup;
 			children = (
+				D7CE74A12B469635004A0D68 /* Info.plist */,
 				D7FA2E072B2852C200080251 /* Extensions */,
 				D7FA2E032B28527100080251 /* Features */,
 				D7FA2DF42B276B2B00080251 /* Views */,
@@ -512,6 +514,7 @@
 				DEVELOPMENT_TEAM = 8MY8P7FRAH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DayTown/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -542,6 +545,7 @@
 				DEVELOPMENT_TEAM = 8MY8P7FRAH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DayTown/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

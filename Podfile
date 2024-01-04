@@ -7,5 +7,7 @@ target 'DayTown' do
 
   # Pods for DayTown
 	pod 'RealmSwift', '~>10'
+	pod 'GoogleSignIn'
+	pod 'GoogleSignInSwiftSupport'
 
 end

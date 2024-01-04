@@ -5,6 +5,7 @@ struct LogoutButton: View {
     @State var isLoggingOut = false
     @State var error: Error?
     @State var errorMessage: ErrorMessage? = nil
+    let myPageTabViewModel: MyPageTabViewModel
     
     var body: some View {
         if isLoggingOut {
@@ -16,7 +17,7 @@ struct LogoutButton: View {
             }
             isLoggingOut = true
             Task {
-                await logout(user: user)
+                await myPageTabViewModel.logout(user: user)
                 isLoggingOut = false
             }
         }.disabled(app.currentUser == nil || isLoggingOut)
@@ -26,16 +27,6 @@ struct LogoutButton: View {
                 message: Text(errorMessage.errorText),
                 dismissButton: .cancel()
             )
-        }
-    }
-    
-    func logout(user: User) async {
-        do {
-            try await user.logOut()
-            print("Successfully logged user out")
-        } catch {
-            print("Failed to log user out: \(error.localizedDescription)")
-            self.errorMessage = ErrorMessage(errorText: error.localizedDescription)
         }
     }
 }

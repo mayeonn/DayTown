@@ -6,7 +6,7 @@ struct WeekView: View {
     var body: some View {
         HStack(spacing: 8) {
             ForEach(Array(viewModel.week.enumerated()), id: \.element) { index, item in
-                let stringToday = viewModel.dateToString(date: viewModel.today)
+                let stringToday = viewModel.dateFormatter.string(from: viewModel.today)
                 let isPickedDate: Bool = viewModel.pickedDate == item
                 let isToday: Bool = stringToday == item
                 VStack(spacing: 4) {
@@ -33,8 +33,5 @@ struct WeekView: View {
         }
         .padding(8)
         .background(Rectangle().fill(.gray.opacity(0.2)))
-        .onAppear{
-            viewModel.initWeek()
-        }
     }
 }

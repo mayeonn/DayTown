@@ -1,5 +1,6 @@
 import SwiftUI
 import RealmSwift
+import GoogleSignIn
 
 let theAppConfig = loadAppConfig()
 let app = App(id: theAppConfig.appId, configuration: AppConfiguration(baseURL: theAppConfig.baseUrl, transport: nil))
@@ -7,7 +8,7 @@ let app = App(id: theAppConfig.appId, configuration: AppConfiguration(baseURL: t
 @main
 struct DayTownApp: SwiftUI.App {
     @StateObject var errorHandler = ErrorHandler(app: app)
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView(app: app)
@@ -17,6 +18,15 @@ struct DayTownApp: SwiftUI.App {
                 } message: {
                     Text(errorHandler.error?.localizedDescription ?? "")
                 }
+                .onOpenURL { url in
+                    GIDSignIn.sharedInstance.handle(url)
+                }
+                .onAppear {
+                    GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+                        // Check if `user` exists; otherwise, do something with `error`
+                        
+                    }
+                }
         }
     }
 }
@@ -24,7 +34,7 @@ struct DayTownApp: SwiftUI.App {
 
 final class ErrorHandler: ObservableObject {
     @Published var error: Swift.Error?
-
+    
     init(app: RealmSwift.App) {
         // Sync Manager listens for sync errors.
         app.syncManager.errorHandler = { syncError, syncSession in
