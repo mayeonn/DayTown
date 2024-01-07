@@ -32,6 +32,9 @@
 		D7B856E92B2899E400194493 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E82B2899E400194493 /* Constants.swift */; };
 		D7B856EB2B28A0C500194493 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856EA2B28A0C500194493 /* WeekView.swift */; };
 		D7B856ED2B28ACDA00194493 /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */; };
+		D7CE74A32B46C62B004A0D68 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE74A22B46C62B004A0D68 /* UserModel.swift */; };
+		D7CE74A52B46C69A004A0D68 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE74A42B46C69A004A0D68 /* GroupModel.swift */; };
+		D7CE74A72B46CAAE004A0D68 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE74A62B46CAAE004A0D68 /* ChallengeModel.swift */; };
 		D7FA2E002B284C6500080251 /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */; };
 		D7FA2E022B284ED200080251 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2E012B284ED200080251 /* HomeTabView.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +69,9 @@
 		D7B856EA2B28A0C500194493 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		D7CE74A12B469635004A0D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D7CE74A22B46C62B004A0D68 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D7CE74A42B46C69A004A0D68 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		D7CE74A62B46CAAE004A0D68 /* ChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeModel.swift; sourceTree = "<group>"; };
 		D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		D7FA2E012B284ED200080251 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +199,9 @@
 			isa = PBXGroup;
 			children = (
 				D754FFEF2B2CBF21005E89F1 /* TodoModel.swift */,
+				D7CE74A22B46C62B004A0D68 /* UserModel.swift */,
+				D7CE74A42B46C69A004A0D68 /* GroupModel.swift */,
+				D7CE74A62B46CAAE004A0D68 /* ChallengeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -355,15 +364,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72F93BE2B3EDFC40017FFEB /* OpenRealmView.swift in Sources */,
+				D7CE74A52B46C69A004A0D68 /* GroupModel.swift in Sources */,
 				D7B856E52B287F0900194493 /* CustomNavigationBar.swift in Sources */,
 				D754FFF02B2CBF21005E89F1 /* TodoModel.swift in Sources */,
 				D7B856E32B287D4800194493 /* MyPageTabViewModel.swift in Sources */,
 				D7B856D92B285B6500194493 /* GroupTabViewModel.swift in Sources */,
 				D76880AE2B235CBD0038CA8A /* ContentView.swift in Sources */,
+				D7CE74A72B46CAAE004A0D68 /* ChallengeModel.swift in Sources */,
 				D7B856E12B287D2600194493 /* MyPageTabView.swift in Sources */,
 				D72F93C02B3EE3730017FFEB /* ErrorView.swift in Sources */,
 				D72F93B52B3EBEA30017FFEB /* AppConfig.swift in Sources */,
 				D7B856DB2B285BA300194493 /* GroupTabView.swift in Sources */,
+				D7CE74A32B46C62B004A0D68 /* UserModel.swift in Sources */,
 				D781AB7C2B30946300713763 /* TodoListCellView.swift in Sources */,
 				D7FA2E022B284ED200080251 /* HomeTabView.swift in Sources */,
 				D76880AC2B235CBD0038CA8A /* DayTownApp.swift in Sources */,

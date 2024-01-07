@@ -1,16 +1,16 @@
 import SwiftUI
 import RealmSwift
+import GoogleSignIn
 
 /// Called when login completes. Opens the realm and navigates to the Items screen.
 struct OpenRealmView: View {
-    // @AutoOpen은 비동기적으로 Realm을 열고 그 상태를 관리함
+    // @AutoOpen은 비동기적으로 Realm을 열고 그 상태를 관리함(Environment에서 realm과 config를 찾음)
     @AutoOpen(appId: theAppConfig.appId, timeout: 2000) var autoOpen
     @State private var tabSelection: Int = 0
     @State var user: User
-    @State var isInOfflineMode = false
-    // AutoOpen이 Realm을 열 때 사용된 Config. Realm 객체도 @Environment(\.realm)로 주입됨
-    @Environment(\.realmConfiguration) private var config
-    
+    @Environment(\.realm) private var realm
+    @Binding var googleProfile: GIDProfileData?
+
     var body: some View {
         switch autoOpen {
         case .connecting:
@@ -27,6 +27,7 @@ struct OpenRealmView: View {
                         switch index {
                         case 0:
                             HomeTabView(viewModel: HomeTabViewModel(), weekViewModel: WeekViewModel(), user: user)
+                            
                         case 1:
                             GroupTabView()
                         case 2:
@@ -43,16 +44,36 @@ struct OpenRealmView: View {
                 }
             }
             .ignoresSafeArea()
-            .onChange(of: isInOfflineMode) { newValue in
-                let syncSession = realm.syncSession!
-                newValue ? syncSession.suspend() : syncSession.resume()
+            .onAppear {
+                // 로그인 화면 거쳐서 들어오면 profile is not nil
+                if let profile = googleProfile {
+                    // 기존에 없던 유저면 new UserModel 추가
+                    let users = realm.objects(UserModel.self)
+                    if users.where({$0.userId == user.id}).isEmpty {
+                        do {
+                            try realm.write {
+                                let newUser = UserModel()
+                                newUser.userId = user.id
+                                newUser.name = profile.name
+                                newUser.email = profile.email
+                                newUser.profileImageURL = profile.imageURL(withDimension: 1)?.description
+                                realm.add(newUser)
+                                print("add newUser")
+                            }
+                        } catch {
+                            print("Failed to add new user: \(error.localizedDescription)")
+                        }
+                    }
+                }
             }
-        case .progress(let progress):
-            // The realm is currently being downloaded from the server.
-            ProgressView(progress)
-        case .error(let error):
-            // Opening the Realm failed.
-            ErrorView(error: error)
-        }
+            case .progress(let progress):
+                // The realm is currently being downloaded from the server.
+                ProgressView(progress)
+            case .error(let error):
+                // Opening the Realm failed.
+                ErrorView(error: error)
+            }
+        
+        
     }
 }

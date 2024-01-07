@@ -24,7 +24,6 @@ struct DayTownApp: SwiftUI.App {
                 .onAppear {
                     GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
                         // Check if `user` exists; otherwise, do something with `error`
-                        
                     }
                 }
         }

@@ -44,5 +44,9 @@ struct HomeTabView: View {
             
             .customNavigationBarTitle(title: "ToDo")
         }
+        .onAppear {
+            print("\n", realm.configuration.fileURL!, "\n")
+        }
+        
     }
 }
