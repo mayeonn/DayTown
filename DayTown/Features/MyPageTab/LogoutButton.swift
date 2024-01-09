@@ -11,16 +11,22 @@ struct LogoutButton: View {
         if isLoggingOut {
             ProgressView()
         }
-        Button("Log Out") {
-            guard let user = app.currentUser else {
-                return
-            }
-            isLoggingOut = true
-            Task {
-                await myPageTabViewModel.logout(user: user)
-                isLoggingOut = false
-            }
-        }.disabled(app.currentUser == nil || isLoggingOut)
+        Button(
+            action: {
+                guard let user = app.currentUser else {
+                    return
+                }
+                isLoggingOut = true
+                Task {
+                    await myPageTabViewModel.logout(user: user)
+                    isLoggingOut = false
+                }
+            }, label: {
+                Text("로그아웃")
+                    .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            })
+        .disabled(app.currentUser == nil || isLoggingOut)
         .alert(item: $errorMessage) { errorMessage in
             Alert(
                 title: Text("Failed to log out"),

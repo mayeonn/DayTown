@@ -3,8 +3,7 @@ import RealmSwift
 import Combine
 import GoogleSignIn
 
-class MyPageTabViewModel: ObservableObject {    
-    private var cancellables: Set<AnyCancellable> = []
+class MyPageTabViewModel: ObservableObject {
     
     func logout(user: User) async {
         do {

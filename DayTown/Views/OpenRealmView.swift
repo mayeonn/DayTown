@@ -6,7 +6,7 @@ import GoogleSignIn
 struct OpenRealmView: View {
     // @AutoOpen은 비동기적으로 Realm을 열고 그 상태를 관리함(Environment에서 realm과 config를 찾음)
     @AutoOpen(appId: theAppConfig.appId, timeout: 2000) var autoOpen
-    @State private var tabSelection: Int = 0
+    @State private var tabSelection: Int = 3
     @State var user: User
     @Environment(\.realm) private var realm
     @Binding var googleProfile: GIDProfileData?
@@ -33,7 +33,7 @@ struct OpenRealmView: View {
                         case 2:
                             ChatTabView()
                         default:
-                            MyPageTabView()
+                            MyPageTabView(user: user)
                         }
                     }
                     .tag(index)
@@ -49,11 +49,11 @@ struct OpenRealmView: View {
                 if let profile = googleProfile {
                     // 기존에 없던 유저면 new UserModel 추가
                     let users = realm.objects(UserModel.self)
-                    if users.where({$0.userId == user.id}).isEmpty {
+                    if users.where({$0._id == user.id}).isEmpty {
                         do {
                             try realm.write {
                                 let newUser = UserModel()
-                                newUser.userId = user.id
+                                newUser._id = user.id
                                 newUser.name = profile.name
                                 newUser.email = profile.email
                                 newUser.profileImageURL = profile.imageURL(withDimension: 1)?.description

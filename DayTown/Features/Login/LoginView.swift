@@ -23,7 +23,7 @@ struct LoginView: View {
             }
             VStack {
                 Text("DayTown")
-                    .font(.title)
+                    .font(.system(size: 36))
                 //                TextField("Email", text: $email)
                 //                    .textInputAutocapitalization(.never)
                 //                    .textFieldStyle(.roundedBorder)
