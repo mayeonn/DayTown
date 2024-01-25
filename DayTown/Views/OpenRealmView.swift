@@ -6,7 +6,7 @@ import GoogleSignIn
 struct OpenRealmView: View {
     // @AutoOpen은 비동기적으로 Realm을 열고 그 상태를 관리함(Environment에서 realm과 config를 찾음)
     @AutoOpen(appId: theAppConfig.appId, timeout: 2000) var autoOpen
-    @State private var tabSelection: Int = 3
+    @State private var tabSelection: Int = 0
     @State var user: User
     @Environment(\.realm) private var realm
     @Binding var googleProfile: GIDProfileData?

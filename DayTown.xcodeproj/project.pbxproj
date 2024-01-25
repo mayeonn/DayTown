@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC3A46BE927C5476561CCC64 /* Pods_DayTown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AED681F1EE31D9B6F06B3D /* Pods_DayTown.framework */; };
+		C2B15D383AB26AAE372DBA85 /* Pods_DayTown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07711EAEBF7408D5F3FB8E7B /* Pods_DayTown.framework */; };
 		D72F93B52B3EBEA30017FFEB /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F93B42B3EBEA30017FFEB /* AppConfig.swift */; };
 		D72F93B72B3EBF020017FFEB /* atlasConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D72F93B62B3EBF020017FFEB /* atlasConfig.plist */; };
 		D72F93BA2B3EC2E60017FFEB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F93B92B3EC2E60017FFEB /* LoginView.swift */; };
@@ -32,7 +32,6 @@
 		D7B856E12B287D2600194493 /* MyPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E02B287D2600194493 /* MyPageTabView.swift */; };
 		D7B856E32B287D4800194493 /* MyPageTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E22B287D4800194493 /* MyPageTabViewModel.swift */; };
 		D7B856E52B287F0900194493 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E42B287F0900194493 /* CustomNavigationBar.swift */; };
-		D7B856E92B2899E400194493 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856E82B2899E400194493 /* Constants.swift */; };
 		D7B856EB2B28A0C500194493 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856EA2B28A0C500194493 /* WeekView.swift */; };
 		D7B856ED2B28ACDA00194493 /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */; };
 		D7CE74A32B46C62B004A0D68 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE74A22B46C62B004A0D68 /* UserModel.swift */; };
@@ -40,12 +39,13 @@
 		D7CE74A72B46CAAE004A0D68 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE74A62B46CAAE004A0D68 /* ChallengeModel.swift */; };
 		D7FA2E002B284C6500080251 /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */; };
 		D7FA2E022B284ED200080251 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2E012B284ED200080251 /* HomeTabView.swift */; };
+		D7FBBD102B62561B00E01FB3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FBBD0F2B62561B00E01FB3 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		35AED681F1EE31D9B6F06B3D /* Pods_DayTown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DayTown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		803854F0C2C95D57BF45FCD6 /* Pods-DayTown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayTown.debug.xcconfig"; path = "Target Support Files/Pods-DayTown/Pods-DayTown.debug.xcconfig"; sourceTree = "<group>"; };
-		B32EBE82758E68A0A21D998D /* Pods-DayTown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayTown.release.xcconfig"; path = "Target Support Files/Pods-DayTown/Pods-DayTown.release.xcconfig"; sourceTree = "<group>"; };
+		07711EAEBF7408D5F3FB8E7B /* Pods_DayTown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DayTown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E8F19DB3A76358DF89DFFC /* Pods-DayTown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayTown.release.xcconfig"; path = "Target Support Files/Pods-DayTown/Pods-DayTown.release.xcconfig"; sourceTree = "<group>"; };
+		D2716395FA0161A77E423084 /* Pods-DayTown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayTown.debug.xcconfig"; path = "Target Support Files/Pods-DayTown/Pods-DayTown.debug.xcconfig"; sourceTree = "<group>"; };
 		D72F93B42B3EBEA30017FFEB /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		D72F93B62B3EBF020017FFEB /* atlasConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = atlasConfig.plist; sourceTree = "<group>"; };
 		D72F93B92B3EC2E60017FFEB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -71,7 +71,6 @@
 		D7B856E02B287D2600194493 /* MyPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTabView.swift; sourceTree = "<group>"; };
 		D7B856E22B287D4800194493 /* MyPageTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTabViewModel.swift; sourceTree = "<group>"; };
 		D7B856E42B287F0900194493 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
-		D7B856E82B2899E400194493 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7B856EA2B28A0C500194493 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		D7B856EC2B28ACDA00194493 /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		D7CE74A12B469635004A0D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		D7CE74A62B46CAAE004A0D68 /* ChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeModel.swift; sourceTree = "<group>"; };
 		D7FA2DFF2B284C6500080251 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		D7FA2E012B284ED200080251 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		D7FBBD0F2B62561B00E01FB3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC3A46BE927C5476561CCC64 /* Pods_DayTown.framework in Frameworks */,
+				C2B15D383AB26AAE372DBA85 /* Pods_DayTown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,18 +97,10 @@
 		A4EA1224CE8CFC907EC4FA68 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				803854F0C2C95D57BF45FCD6 /* Pods-DayTown.debug.xcconfig */,
-				B32EBE82758E68A0A21D998D /* Pods-DayTown.release.xcconfig */,
+				D2716395FA0161A77E423084 /* Pods-DayTown.debug.xcconfig */,
+				27E8F19DB3A76358DF89DFFC /* Pods-DayTown.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C67F26A73227460882D9D145 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				35AED681F1EE31D9B6F06B3D /* Pods_DayTown.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D72F93B82B3EC2D90017FFEB /* Login */ = {
@@ -126,7 +118,7 @@
 				D76880AA2B235CBD0038CA8A /* DayTown */,
 				D76880A92B235CBD0038CA8A /* Products */,
 				A4EA1224CE8CFC907EC4FA68 /* Pods */,
-				C67F26A73227460882D9D145 /* Frameworks */,
+				F7D901A4B8CE6EE10C4F8FED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,16 +134,15 @@
 			isa = PBXGroup;
 			children = (
 				D7CE74A12B469635004A0D68 /* Info.plist */,
-				D7FA2E072B2852C200080251 /* Extensions */,
 				D7FA2E032B28527100080251 /* Features */,
 				D7FA2DF42B276B2B00080251 /* Views */,
 				D7FA2DEF2B276ADB00080251 /* Models */,
 				D7CE4ACE2B258B4C000206F4 /* ViewModels */,
 				D76880AB2B235CBD0038CA8A /* DayTownApp.swift */,
-				D7B856E82B2899E400194493 /* Constants.swift */,
+				D7FBBD0F2B62561B00E01FB3 /* Constants.swift */,
+				D72F93B42B3EBEA30017FFEB /* AppConfig.swift */,
 				D76880AF2B235CBF0038CA8A /* Assets.xcassets */,
 				D76880B12B235CBF0038CA8A /* Preview Content */,
-				D72F93B42B3EBEA30017FFEB /* AppConfig.swift */,
 				D72F93B62B3EBF020017FFEB /* atlasConfig.plist */,
 			);
 			path = DayTown;
@@ -250,11 +241,12 @@
 			path = HomeTab;
 			sourceTree = "<group>";
 		};
-		D7FA2E072B2852C200080251 /* Extensions */ = {
+		F7D901A4B8CE6EE10C4F8FED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07711EAEBF7408D5F3FB8E7B /* Pods_DayTown.framework */,
 			);
-			path = Extensions;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,11 +256,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D76880B62B235CBF0038CA8A /* Build configuration list for PBXNativeTarget "DayTown" */;
 			buildPhases = (
-				3179CE2569101C19160C21A4 /* [CP] Check Pods Manifest.lock */,
+				B6C973042BC9F6CE7C632E9E /* [CP] Check Pods Manifest.lock */,
 				D76880A42B235CBD0038CA8A /* Sources */,
 				D76880A52B235CBD0038CA8A /* Frameworks */,
 				D76880A62B235CBD0038CA8A /* Resources */,
-				FBA1EBA4AAC1276331D7121D /* [CP] Embed Pods Frameworks */,
+				09DF00377550396859AE4795 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -326,7 +318,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3179CE2569101C19160C21A4 /* [CP] Check Pods Manifest.lock */ = {
+		09DF00377550396859AE4795 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DayTown/Pods-DayTown-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DayTown/Pods-DayTown-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DayTown/Pods-DayTown-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6C973042BC9F6CE7C632E9E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -348,23 +357,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FBA1EBA4AAC1276331D7121D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DayTown/Pods-DayTown-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DayTown/Pods-DayTown-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DayTown/Pods-DayTown-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -377,6 +369,7 @@
 				D7946A202B4C74770024824E /* ProfileEditView.swift in Sources */,
 				D7B856E52B287F0900194493 /* CustomNavigationBar.swift in Sources */,
 				D754FFF02B2CBF21005E89F1 /* TodoModel.swift in Sources */,
+				D7FBBD102B62561B00E01FB3 /* Constants.swift in Sources */,
 				D7B856E32B287D4800194493 /* MyPageTabViewModel.swift in Sources */,
 				D7B856D92B285B6500194493 /* GroupTabViewModel.swift in Sources */,
 				D76880AE2B235CBD0038CA8A /* ContentView.swift in Sources */,
@@ -399,7 +392,6 @@
 				D72F93C22B3F4C540017FFEB /* LogoutButton.swift in Sources */,
 				D7B856ED2B28ACDA00194493 /* WeekViewModel.swift in Sources */,
 				D72F93BA2B3EC2E60017FFEB /* LoginView.swift in Sources */,
-				D7B856E92B2899E400194493 /* Constants.swift in Sources */,
 				D72F93BC2B3ED8DA0017FFEB /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,7 +520,7 @@
 		};
 		D76880B72B235CBF0038CA8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 803854F0C2C95D57BF45FCD6 /* Pods-DayTown.debug.xcconfig */;
+			baseConfigurationReference = D2716395FA0161A77E423084 /* Pods-DayTown.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -544,6 +536,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -559,7 +552,7 @@
 		};
 		D76880B82B235CBF0038CA8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B32EBE82758E68A0A21D998D /* Pods-DayTown.release.xcconfig */;
+			baseConfigurationReference = 27E8F19DB3A76358DF89DFFC /* Pods-DayTown.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -575,6 +568,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
