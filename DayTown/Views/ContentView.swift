@@ -28,6 +28,14 @@ struct ContentView: View {
                 } else {
                     subs.append(QuerySubscription<UserModel>(name: K.users))
                 }
+                
+                // Group 동기화
+                subs.remove(named: K.allGroups)
+                if let _ = subs.first(named: K.allGroups) {
+                    return
+                } else {
+                    subs.append(QuerySubscription<Group>(name: K.allGroups))
+                }
             })
             // config를 environment로 저장하고(@AutoOpen이 찾아서 사용함) OpenRealmView로 이동
             OpenRealmView(user: user, googleProfile: $googleProfile)

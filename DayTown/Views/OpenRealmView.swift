@@ -29,7 +29,7 @@ struct OpenRealmView: View {
                             HomeTabView(viewModel: HomeTabViewModel(), weekViewModel: WeekViewModel(), user: user)
                             
                         case 1:
-                            GroupTabView()
+                            GroupTabView(viewModel: GroupTabViewModel(), user: user)
                         case 2:
                             ChatTabView()
                         default:

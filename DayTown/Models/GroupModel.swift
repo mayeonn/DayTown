@@ -1,11 +1,12 @@
 import RealmSwift
 
 class Group: Object, ObjectKeyIdentifiable {
-    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted(primaryKey: true) var _id: String
     @Persisted var name: String
     @Persisted var isPrivate: Bool
     @Persisted var password: String?
+    @Persisted var owner_id: String
     
-    let members = List<UserModel>()
-    let challenges = List<Challenge>()
+    var members = List<UserModel>()
+    var challenges = List<Challenge>()
 }

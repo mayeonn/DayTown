@@ -9,5 +9,5 @@ class UserModel: Object, ObjectKeyIdentifiable {
     @Persisted var introduction: String?
     
     // 해당 사용자가 속한 그룹 리스트
-    let groups = LinkingObjects(fromType: Group.self, property: "members")  //List와 LinkingObjects는 Realm에서 자동으로 관리되는 객체로, @Persisted 명시하지 않아도 됨
+    var groups = LinkingObjects(fromType: Group.self, property: "members")  //List와 LinkingObjects는 Realm에서 자동으로 관리되는 객체로, @Persisted 명시하지 않아도 됨
 }

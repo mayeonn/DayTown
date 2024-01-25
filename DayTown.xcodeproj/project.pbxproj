@@ -16,6 +16,7 @@
 		D72F93C02B3EE3730017FFEB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F93BF2B3EE3730017FFEB /* ErrorView.swift */; };
 		D72F93C22B3F4C540017FFEB /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F93C12B3F4C540017FFEB /* LogoutButton.swift */; };
 		D754FFF02B2CBF21005E89F1 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754FFEF2B2CBF21005E89F1 /* TodoModel.swift */; };
+		D7661B592B628097002ADCCE /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7661B582B628097002ADCCE /* AddGroupView.swift */; };
 		D76880AC2B235CBD0038CA8A /* DayTownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76880AB2B235CBD0038CA8A /* DayTownApp.swift */; };
 		D76880AE2B235CBD0038CA8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76880AD2B235CBD0038CA8A /* ContentView.swift */; };
 		D76880B02B235CBF0038CA8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D76880AF2B235CBF0038CA8A /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		D72F93BF2B3EE3730017FFEB /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		D72F93C12B3F4C540017FFEB /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		D754FFEF2B2CBF21005E89F1 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
+		D7661B582B628097002ADCCE /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
 		D76880A82B235CBD0038CA8A /* DayTown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayTown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76880AB2B235CBD0038CA8A /* DayTownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTownApp.swift; sourceTree = "<group>"; };
 		D76880AD2B235CBD0038CA8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				D7B856D82B285B6500194493 /* GroupTabViewModel.swift */,
 				D7B856DA2B285BA300194493 /* GroupTabView.swift */,
+				D7661B582B628097002ADCCE /* AddGroupView.swift */,
 			);
 			path = GroupTab;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				D7B856ED2B28ACDA00194493 /* WeekViewModel.swift in Sources */,
 				D72F93BA2B3EC2E60017FFEB /* LoginView.swift in Sources */,
 				D72F93BC2B3ED8DA0017FFEB /* LoginViewModel.swift in Sources */,
+				D7661B592B628097002ADCCE /* AddGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
