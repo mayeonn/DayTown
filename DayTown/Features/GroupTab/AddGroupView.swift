@@ -8,6 +8,7 @@ struct AddGroupView: View {
     @State private var groupName: String = ""
     @State private var isPrivate: Bool = false
     @State private var password: String = ""
+    @State private var intro: String = ""
     @State var user: User
     
     init(user: User, showModal: Binding<Bool>) {
@@ -18,21 +19,12 @@ struct AddGroupView: View {
     var body: some View {
         NavigationView{
             VStack(spacing: 24) {
-                HStack {
-                    Text("그룹 이름")
-                        .frame(width: 100, alignment: .leading)
-                    TextField("그룹 이름", text: $groupName)
-                    .textFieldStyle(.roundedBorder)
-                }
+                TextFieldwithTitle(title: "그룹 이름", titleWidth: 100, text: $groupName)
+                TextFieldwithTitle(title: "그룹 소개글", titleWidth: 100, text: $intro)
                 
                 Toggle("비공개 그룹", isOn: $isPrivate)
                 if isPrivate {
-                    HStack {
-                        Text("참여 비밀번호")
-                            .frame(width: 100, alignment: .leading)
-                        TextField("참여 비밀번호", text: $password)
-                            .textFieldStyle(.roundedBorder)
-                    }
+                    TextFieldwithTitle(title: "참여 비밀번호", titleWidth: 100, text: $password)
                 }
                 Spacer()
             }
@@ -56,6 +48,7 @@ struct AddGroupView: View {
                                 newGroup.isPrivate = isPrivate
                                 newGroup.password = password
                                 newGroup.owner_id = user.id
+                                newGroup.introduction = intro
                                 realm.add(newGroup)
                             }
                         } catch {

@@ -23,6 +23,7 @@
 		D76880B32B235CBF0038CA8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D76880B22B235CBF0038CA8A /* Preview Assets.xcassets */; };
 		D781AB7C2B30946300713763 /* TodoListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D781AB7B2B30946300713763 /* TodoListCellView.swift */; };
 		D781AB7E2B30A93000713763 /* AddTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D781AB7D2B30A93000713763 /* AddTodoButton.swift */; };
+		D781D48C2B6504340038740E /* TextFieldwithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D781D48B2B6504340038740E /* TextFieldwithTitle.swift */; };
 		D7946A1E2B4C1F140024824E /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7946A1D2B4C1F140024824E /* UserInfoView.swift */; };
 		D7946A202B4C74770024824E /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7946A1F2B4C74770024824E /* ProfileEditView.swift */; };
 		D7946A282B4D375F0024824E /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7946A272B4D375F0024824E /* ProfileImage.swift */; };
@@ -63,6 +64,7 @@
 		D76880B22B235CBF0038CA8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D781AB7B2B30946300713763 /* TodoListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListCellView.swift; sourceTree = "<group>"; };
 		D781AB7D2B30A93000713763 /* AddTodoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoButton.swift; sourceTree = "<group>"; };
+		D781D48B2B6504340038740E /* TextFieldwithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldwithTitle.swift; sourceTree = "<group>"; };
 		D7946A1D2B4C1F140024824E /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		D7946A1F2B4C74770024824E /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		D7946A272B4D375F0024824E /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				D72F93BD2B3EDFC40017FFEB /* OpenRealmView.swift */,
 				D72F93BF2B3EE3730017FFEB /* ErrorView.swift */,
 				D7946A272B4D375F0024824E /* ProfileImage.swift */,
+				D781D48B2B6504340038740E /* TextFieldwithTitle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				D7CE74A32B46C62B004A0D68 /* UserModel.swift in Sources */,
 				D781AB7C2B30946300713763 /* TodoListCellView.swift in Sources */,
 				D7FA2E022B284ED200080251 /* HomeTabView.swift in Sources */,
+				D781D48C2B6504340038740E /* TextFieldwithTitle.swift in Sources */,
 				D76880AC2B235CBD0038CA8A /* DayTownApp.swift in Sources */,
 				D781AB7E2B30A93000713763 /* AddTodoButton.swift in Sources */,
 				D7B856DF2B287CD500194493 /* ChatTabViewModel.swift in Sources */,

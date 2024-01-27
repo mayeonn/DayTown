@@ -22,18 +22,8 @@ struct ProfileEditView: View {
             ProfileImage(url: viewModel.currentUser?.profileImageURL, size: 100)
                 .padding(40)
 
-            HStack {
-                Text("이름")
-                    .frame(width: 60, alignment: .leading)
-                TextField("이름", text: $userName)
-                    .textFieldStyle(.roundedBorder)
-            }
-            HStack() {
-                Text("소개")
-                    .frame(width: 60, alignment: .leading)
-                TextField("소개", text: $userIntro)
-                    .textFieldStyle(.roundedBorder)
-            }
+            TextFieldwithTitle(title: "이름", titleWidth: 60, text: $userName)
+            TextFieldwithTitle(title: "소개", titleWidth: 60, text: $userIntro)
             Spacer()
         }
         .navigationTitle(K.editProfile)
