@@ -3,8 +3,8 @@ import Combine
 
 class GroupTabViewModel: ObservableObject {
     @Published var currentUser: UserModel?
-    private var cancellables: Set<AnyCancellable> = []
     @Published var myGroups: [Group] = []
+    private var cancellables: Set<AnyCancellable> = []
     
     init() {
         $myGroups
