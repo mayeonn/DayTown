@@ -20,7 +20,7 @@ struct ProfileEditView: View {
     var body: some View {
         VStack(spacing: 8) {
             ProfileImage(url: viewModel.currentUser?.profileImageURL, size: 100)
-                .padding(40)
+                .padding(.bottom, 40)
 
             TextFieldwithTitle(title: "이름", titleWidth: 60, text: $userName)
             TextFieldwithTitle(title: "소개", titleWidth: 60, text: $userIntro)

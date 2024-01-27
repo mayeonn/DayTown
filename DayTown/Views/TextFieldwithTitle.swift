@@ -5,7 +5,6 @@ struct TextFieldwithTitle: View {
     let titleWidth: CGFloat
     @Binding var text: String
     
-    
     var body: some View {
         HStack {
             Text(title)

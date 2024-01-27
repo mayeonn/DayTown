@@ -17,7 +17,7 @@ struct AddGroupView: View {
     }
     
     var body: some View {
-        NavigationView{
+        NavigationStack {
             VStack(spacing: 24) {
                 TextFieldwithTitle(title: "그룹 이름", titleWidth: 100, text: $groupName)
                 TextFieldwithTitle(title: "그룹 소개글", titleWidth: 100, text: $intro)

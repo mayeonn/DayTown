@@ -11,30 +11,43 @@ struct GroupTabView: View {
     
     
     var body: some View {
-        VStack {
+        NavigationStack {
             List {
                 ForEach(groupList) { group in
-                    Text(group.name)
+                    NavigationLink {
+                        Text(group.name)
+                    } label: {
+                        GroupInfoView(group: group)
+                    }
                 }
             }
+            .listStyle(.plain)
             
             .customNavigationBarTitle(title: "그룹")
             .toolbar {
+                // Add Group Button
                 Button(
                     action: {
                         showModal = true
                     },
                     label: {
-                        Image(systemName: "plus.circle")
+                        Image(systemName: "plus")
                             .font(.system(size: 20))
                     }
                 )
                 .sheet(isPresented: $showModal) {
                     AddGroupView(user: user, showModal: $showModal)
                 }
+                // Group Search Button
+                NavigationLink {
+                    GroupSearchView(user: user)
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.blue)
+                        .font(.system(size: 20))
+                }
             }
             .onAppear {
-                viewModel.fetchData()
             }
         }
     }

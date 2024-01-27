@@ -6,7 +6,7 @@ import GoogleSignIn
 struct OpenRealmView: View {
     // @AutoOpen은 비동기적으로 Realm을 열고 그 상태를 관리함(Environment에서 realm과 config를 찾음)
     @AutoOpen(appId: theAppConfig.appId, timeout: 2000) var autoOpen
-    @State private var tabSelection: Int = 0
+    @State private var tabSelection: Int = 1
     @State var user: User
     @Environment(\.realm) private var realm
     @Binding var googleProfile: GIDProfileData?
@@ -23,7 +23,7 @@ struct OpenRealmView: View {
             // The realm has been opened and is ready for use.
             TabView(selection: $tabSelection){
                 ForEach(0...3, id: \.self) { index in
-                    NavigationView {
+                    NavigationStack {
                         switch index {
                         case 0:
                             HomeTabView(viewModel: HomeTabViewModel(), weekViewModel: WeekViewModel(), user: user)

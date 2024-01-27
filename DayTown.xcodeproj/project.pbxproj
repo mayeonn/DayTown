@@ -24,6 +24,8 @@
 		D781AB7C2B30946300713763 /* TodoListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D781AB7B2B30946300713763 /* TodoListCellView.swift */; };
 		D781AB7E2B30A93000713763 /* AddTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D781AB7D2B30A93000713763 /* AddTodoButton.swift */; };
 		D781D48C2B6504340038740E /* TextFieldwithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D781D48B2B6504340038740E /* TextFieldwithTitle.swift */; };
+		D781D48E2B650EEA0038740E /* GroupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D781D48D2B650EEA0038740E /* GroupSearchView.swift */; };
+		D781D4902B652BBA0038740E /* GroupInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D781D48F2B652BBA0038740E /* GroupInfoView.swift */; };
 		D7946A1E2B4C1F140024824E /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7946A1D2B4C1F140024824E /* UserInfoView.swift */; };
 		D7946A202B4C74770024824E /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7946A1F2B4C74770024824E /* ProfileEditView.swift */; };
 		D7946A282B4D375F0024824E /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7946A272B4D375F0024824E /* ProfileImage.swift */; };
@@ -65,6 +67,8 @@
 		D781AB7B2B30946300713763 /* TodoListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListCellView.swift; sourceTree = "<group>"; };
 		D781AB7D2B30A93000713763 /* AddTodoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoButton.swift; sourceTree = "<group>"; };
 		D781D48B2B6504340038740E /* TextFieldwithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldwithTitle.swift; sourceTree = "<group>"; };
+		D781D48D2B650EEA0038740E /* GroupSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchView.swift; sourceTree = "<group>"; };
+		D781D48F2B652BBA0038740E /* GroupInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoView.swift; sourceTree = "<group>"; };
 		D7946A1D2B4C1F140024824E /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		D7946A1F2B4C74770024824E /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		D7946A272B4D375F0024824E /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				D7B856D82B285B6500194493 /* GroupTabViewModel.swift */,
 				D7B856DA2B285BA300194493 /* GroupTabView.swift */,
 				D7661B582B628097002ADCCE /* AddGroupView.swift */,
+				D781D48D2B650EEA0038740E /* GroupSearchView.swift */,
+				D781D48F2B652BBA0038740E /* GroupInfoView.swift */,
 			);
 			path = GroupTab;
 			sourceTree = "<group>";
@@ -381,9 +387,11 @@
 				D76880AE2B235CBD0038CA8A /* ContentView.swift in Sources */,
 				D7CE74A72B46CAAE004A0D68 /* ChallengeModel.swift in Sources */,
 				D7B856E12B287D2600194493 /* MyPageTabView.swift in Sources */,
+				D781D4902B652BBA0038740E /* GroupInfoView.swift in Sources */,
 				D72F93C02B3EE3730017FFEB /* ErrorView.swift in Sources */,
 				D72F93B52B3EBEA30017FFEB /* AppConfig.swift in Sources */,
 				D7B856DB2B285BA300194493 /* GroupTabView.swift in Sources */,
+				D781D48E2B650EEA0038740E /* GroupSearchView.swift in Sources */,
 				D7946A282B4D375F0024824E /* ProfileImage.swift in Sources */,
 				D7CE74A32B46C62B004A0D68 /* UserModel.swift in Sources */,
 				D781AB7C2B30946300713763 /* TodoListCellView.swift in Sources */,
