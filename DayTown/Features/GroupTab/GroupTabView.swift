@@ -39,7 +39,7 @@ struct GroupTabView: View {
                 }
                 // Group Search Button
                 NavigationLink {
-                    GroupSearchView(user: user)
+                    GroupSearchView(viewModel: viewModel)
                 } label: {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.blue)
