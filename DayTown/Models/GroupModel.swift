@@ -8,6 +8,6 @@ class Group: Object, ObjectKeyIdentifiable {
     @Persisted var password: String?
     @Persisted var owner_id: String
     
-    var members = List<UserModel>()
-    var challenges = List<Challenge>()
+    @Persisted var members = List<UserModel>()
+    @Persisted var challenges = List<Challenge>()
 }

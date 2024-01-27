@@ -2,6 +2,7 @@ import SwiftUI
 import RealmSwift
 
 struct AddGroupView: View {
+    @ObservedObject var viewModel: GroupTabViewModel
     @Environment(\.realm) private var realm
     @EnvironmentObject var errorHandler: ErrorHandler
     @Binding private var showModal: Bool
@@ -9,10 +10,9 @@ struct AddGroupView: View {
     @State private var isPrivate: Bool = false
     @State private var password: String = ""
     @State private var intro: String = ""
-    @State var user: User
     
-    init(user: User, showModal: Binding<Bool>) {
-        self.user = user
+    init(viewModel: GroupTabViewModel, showModal: Binding<Bool>) {
+        self.viewModel = viewModel
         _showModal = showModal
     }
     
@@ -47,8 +47,12 @@ struct AddGroupView: View {
                                 newGroup.name = groupName
                                 newGroup.isPrivate = isPrivate
                                 newGroup.password = password
-                                newGroup.owner_id = user.id
                                 newGroup.introduction = intro
+                                if let currentUser = viewModel.currentUser {
+                                    newGroup.owner_id = currentUser._id
+                                    newGroup.members.append(currentUser)
+                                    viewModel.myGroups.append(newGroup)
+                                }
                                 realm.add(newGroup)
                             }
                         } catch {

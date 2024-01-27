@@ -6,13 +6,7 @@ struct MyPageTabView: View {
     @ObservedObject var viewModel: MyPageTabViewModel
     @State var isLoggingOut = false
     @Environment(\.realm) private var realm
-    @State private var user: User
-    
-    
-    init(user: User) {
-        self.viewModel = MyPageTabViewModel()
-        self.user = user
-    }
+    @State var user: User
     
     var body: some View {
         List {

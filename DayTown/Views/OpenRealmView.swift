@@ -33,7 +33,7 @@ struct OpenRealmView: View {
                         case 2:
                             ChatTabView()
                         default:
-                            MyPageTabView(user: user)
+                            MyPageTabView(viewModel: MyPageTabViewModel(), user: user)
                         }
                     }
                     .tag(index)

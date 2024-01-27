@@ -6,14 +6,12 @@ struct GroupTabView: View {
     @Environment(\.realm) private var realm
     @State var user: User
     @State private var showModal = false
-    @ObservedResults(Group.self) var groupList
-    
     
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(groupList) { group in
+                ForEach(viewModel.myGroups) { group in
                     NavigationLink {
                         Text(group.name)
                     } label: {
@@ -22,6 +20,7 @@ struct GroupTabView: View {
                 }
             }
             .listStyle(.plain)
+            
             
             .customNavigationBarTitle(title: "그룹")
             .toolbar {
@@ -36,7 +35,7 @@ struct GroupTabView: View {
                     }
                 )
                 .sheet(isPresented: $showModal) {
-                    AddGroupView(user: user, showModal: $showModal)
+                    AddGroupView(viewModel: viewModel, showModal: $showModal)
                 }
                 // Group Search Button
                 NavigationLink {
@@ -47,7 +46,12 @@ struct GroupTabView: View {
                         .font(.system(size: 20))
                 }
             }
-            .onAppear {
+        }
+        
+        .onAppear {
+            if let user = realm.object(ofType: UserModel.self, forPrimaryKey: user.id) {
+                viewModel.currentUser = user
+                viewModel.myGroups = Array(user.groups)
             }
         }
     }
