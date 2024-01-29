@@ -7,6 +7,7 @@ struct GroupSearchView: View {
     @State private var searchText: String = ""
     @Environment(\.realm) private var realm
     @State private var showAlert = false
+    @State private var alertMessage = ""
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -20,7 +21,7 @@ struct GroupSearchView: View {
                 .onTapGesture {
                     joinGroup(groupId: group._id)
                 }
-                .alert("이미 참여 중인 그룹입니다.", isPresented: $showAlert) {
+                .alert(alertMessage, isPresented: $showAlert) {
                     Button("확인", role: .cancel){}
                 }
             }
@@ -50,7 +51,13 @@ struct GroupSearchView: View {
             
             if viewModel.myGroups.contains(groupToModify) {
                 showAlert = true
-            } else {
+                alertMessage = "이미 참여 중인 그룹입니다."
+            }
+            else if groupToModify.isPrivate {
+                showAlert = true
+                alertMessage = "참여 비밀번호를 입력하세요."
+            }
+            else {
                 try! realm.write {
                     groupToModify.members.append(currentUser)
                     viewModel.myGroups.append(groupToModify)

@@ -1,17 +1,23 @@
 import SwiftUI
 import RealmSwift
+import PhotosUI
 
 struct AddGroupView: View {
     @ObservedObject var viewModel: GroupTabViewModel
     @Environment(\.realm) private var realm
     @EnvironmentObject var errorHandler: ErrorHandler
     @Binding private var showModal: Bool
+    
     @State private var showAlert = false
-    @State private var alertMessage = ""
+    @State private var alertMessage: String = ""
     @State private var groupName: String = ""
     @State private var groupIntro: String = ""
     @State private var isPrivate: Bool = false
     @State private var password: String = ""
+    
+    @State private var selectedImage: PhotosPickerItem? = nil
+    @State private var selectedImageData: Data? = nil
+    
     
     init(viewModel: GroupTabViewModel, showModal: Binding<Bool>) {
         self.viewModel = viewModel
@@ -20,7 +26,17 @@ struct AddGroupView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 24) {
+            VStack(spacing: 16) {
+                if let selectedImageData,
+                   let uiImage = UIImage(data: selectedImageData) {
+                    CircleImageView(image: Image(uiImage: uiImage))
+                        .overlayPhotosPicker(selectedItem: $selectedImage)
+                } else {
+                    CircleImageView(image: Image(systemName: "person.2.circle.fill"))
+                        .opacity(0.1)
+                        .overlayPhotosPicker(selectedItem: $selectedImage)
+                }
+                
                 TextFieldwithTitle(title: "그룹 이름", titleWidth: 100, text: $groupName)
                 TextFieldwithTitle(title: "그룹 소개글", titleWidth: 100, text: $groupIntro)
                 
@@ -28,6 +44,8 @@ struct AddGroupView: View {
                 if isPrivate {
                     TextFieldwithTitle(title: "참여 비밀번호", titleWidth: 100, text: $password)
                 }
+                
+                
                 Spacer()
             }
             .padding(24)
@@ -58,6 +76,8 @@ struct AddGroupView: View {
                                     }
                                     realm.add(newGroup)
                                 }
+                                
+                                
                             } catch {
                                 self.errorHandler.error = error
                             }
@@ -70,8 +90,18 @@ struct AddGroupView: View {
                     }
                 }
             }
+            .onChange(of: selectedImage, { oldValue, newValue in
+                Task {
+                    // Retrive selected asset in the form of Data
+                    if let data = try? await newValue?.loadTransferable(type: Data.self) {
+                        selectedImageData = data
+                    }
+                }
+            })
         }
     }
+    
+    
     
     
     private func dismiss() {
@@ -94,5 +124,23 @@ struct AddGroupView: View {
         }
         return true
     }
+    
+    
+    func uploadImageAndGetUrl() async {
+        guard let imageData = selectedImageData else {
+            print("No image selected")
+            return
+        }
+        
+        // MongoDB Realm Functions 호출
+        do {
+            let imageURLResult = try await app.currentUser?.functions.uploadGroupProfileImage([AnyBSON(imageData)])
+            print("Called function 'uploadGroupProfileImage' and got result: \(String(describing: imageURLResult))")
+        } catch {
+            print("Function call failed: \(error.localizedDescription)")
+        }
+        
+    }
 }
+
 
