@@ -3,10 +3,11 @@ import RealmSwift
 import PhotosUI
 
 struct AddGroupView: View {
+    //    @State var user: User
     @ObservedObject var viewModel: GroupTabViewModel
     @Environment(\.realm) private var realm
     @EnvironmentObject var errorHandler: ErrorHandler
-    @Binding private var showModal: Bool
+    @Environment(\.dismiss) var dismiss
     
     @State private var showAlert = false
     @State private var alertMessage: String = ""
@@ -14,15 +15,8 @@ struct AddGroupView: View {
     @State private var groupIntro: String = ""
     @State private var isPrivate: Bool = false
     @State private var password: String = ""
-    
     @State private var selectedImage: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
-    
-    
-    init(viewModel: GroupTabViewModel, showModal: Binding<Bool>) {
-        self.viewModel = viewModel
-        _showModal = showModal
-    }
     
     var body: some View {
         NavigationStack {
@@ -60,26 +54,25 @@ struct AddGroupView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("추가") {
+                        
                         if validate() {
-                            do {
-                                try realm.write {
-                                    let newGroup = Group()
-                                    newGroup._id = ObjectId.generate().stringValue
-                                    newGroup.name = groupName
-                                    newGroup.isPrivate = isPrivate
-                                    newGroup.password = password
-                                    newGroup.introduction = groupIntro
-                                    if let currentUser = viewModel.currentUser {
-                                        newGroup.owner_id = currentUser._id
-                                        newGroup.members.append(currentUser)
-                                        viewModel.myGroups.append(newGroup)
-                                    }
-                                    realm.add(newGroup)
+                            Task {
+                                let newGroup = Group()
+                                newGroup._id = ObjectId.generate().stringValue
+                                newGroup.profileImageURL = await uploadImageAndGetUrl(groupId: newGroup._id)
+                                newGroup.name = groupName
+                                newGroup.isPrivate = isPrivate
+                                newGroup.password = password
+                                newGroup.introduction = groupIntro
+                                if let currentUser = viewModel.currentUser {
+                                    newGroup.owner_id = currentUser._id
+                                    newGroup.members.append(currentUser)
+                                    viewModel.myGroups.append(newGroup)
                                 }
                                 
-                                
-                            } catch {
-                                self.errorHandler.error = error
+                                try? realm.write {
+                                    realm.add(newGroup)
+                                }
                             }
                             
                             dismiss()
@@ -92,23 +85,12 @@ struct AddGroupView: View {
             }
             .onChange(of: selectedImage, { oldValue, newValue in
                 Task {
-                    // Retrive selected asset in the form of Data
                     if let data = try? await newValue?.loadTransferable(type: Data.self) {
                         selectedImageData = data
                     }
                 }
             })
         }
-    }
-    
-    
-    
-    
-    private func dismiss() {
-        groupName = ""
-        isPrivate = false
-        password = ""
-        showModal = false
     }
     
     private func validate() -> Bool {
@@ -126,20 +108,27 @@ struct AddGroupView: View {
     }
     
     
-    func uploadImageAndGetUrl() async {
+    func uploadImageAndGetUrl(groupId: String) async -> String?{
         guard let imageData = selectedImageData else {
             print("No image selected")
-            return
+            return nil
+        }
+        guard let user = app.currentUser else {
+            print("No current user")
+            return nil
         }
         
         // MongoDB Realm Functions 호출
         do {
-            let imageURLResult = try await app.currentUser?.functions.uploadGroupProfileImage([AnyBSON(imageData)])
-            print("Called function 'uploadGroupProfileImage' and got result: \(String(describing: imageURLResult))")
+            let key: String = "groupProfileImage/" + groupId + ".jpg";
+            
+            let base64EncodedImage = imageData.base64EncodedString()
+            let result = try await user.functions.uploadImageToAWS([AnyBSON(base64EncodedImage), AnyBSON(key)])
+            return result.stringValue
         } catch {
             print("Function call failed: \(error.localizedDescription)")
+            return nil
         }
-        
     }
 }
 

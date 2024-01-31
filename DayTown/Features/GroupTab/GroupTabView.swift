@@ -25,17 +25,23 @@ struct GroupTabView: View {
             .customNavigationBarTitle(title: "그룹")
             .toolbar {
                 // Add Group Button
-                Button(
-                    action: {
-                        showModal = true
-                    },
-                    label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 20))
-                    }
-                )
-                .sheet(isPresented: $showModal) {
-                    AddGroupView(viewModel: viewModel, showModal: $showModal)
+//                Button(
+//                    action: {
+//                        showModal = true
+//                    },
+//                    label: {
+//                        Image(systemName: "plus")
+//                            .font(.system(size: 20))
+//                    }
+//                )
+//                .sheet(isPresented: $showModal) {
+//                    AddGroupView(viewModel: viewModel, showModal: $showModal, user: user)
+//                }
+                NavigationLink {
+                    AddGroupView(viewModel: viewModel)//user: user, 
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 20))
                 }
                 // Group Search Button
                 NavigationLink {

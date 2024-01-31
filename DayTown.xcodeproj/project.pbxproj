@@ -285,6 +285,8 @@
 			dependencies = (
 			);
 			name = DayTown;
+			packageProductDependencies = (
+			);
 			productName = DayTown;
 			productReference = D76880A82B235CBD0038CA8A /* DayTown.app */;
 			productType = "com.apple.product-type.application";
@@ -313,6 +315,8 @@
 				Base,
 			);
 			mainGroup = D768809F2B235CBD0038CA8A;
+			packageReferences = (
+			);
 			productRefGroup = D76880A92B235CBD0038CA8A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
