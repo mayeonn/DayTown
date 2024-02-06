@@ -17,11 +17,13 @@ struct ProfileImage: View {
                 } placeholder: {
                     ProgressView()
                 }
-                .frame(width: 100, height: 100)
+                .frame(width: size, height: size)
                 .clipShape(Circle())
             
         } else {
             Image(systemName: "person.fill")
+                .frame(width: size, height: size)
+                .scaledToFill()
         }
     }
 }

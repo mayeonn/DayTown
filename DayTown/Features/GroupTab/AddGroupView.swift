@@ -17,12 +17,13 @@ struct AddGroupView: View {
     @State private var password: String = ""
     @State private var selectedImage: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
+    @State private var selectedUIImage: UIImage? = nil
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
                 if let selectedImageData,
-                   let uiImage = UIImage(data: selectedImageData) {
+                   let uiImage = selectedUIImage {
                     CircleImageView(image: Image(uiImage: uiImage))
                         .overlayPhotosPicker(selectedItem: $selectedImage)
                 } else {
@@ -59,7 +60,7 @@ struct AddGroupView: View {
                             Task {
                                 let newGroup = Group()
                                 newGroup._id = ObjectId.generate().stringValue
-                                newGroup.profileImageURL = await uploadImageAndGetUrl(groupId: newGroup._id)
+                                newGroup.profileImageURL = await viewModel.uploadImageAndGetUrl(groupId: newGroup._id, image: selectedUIImage)
                                 newGroup.name = groupName
                                 newGroup.isPrivate = isPrivate
                                 newGroup.password = password
@@ -87,6 +88,9 @@ struct AddGroupView: View {
                 Task {
                     if let data = try? await newValue?.loadTransferable(type: Data.self) {
                         selectedImageData = data
+                        if let image = UIImage(data: data) {
+                            selectedUIImage = image.resizeToSquare(width: 300)
+                        }
                     }
                 }
             })
@@ -108,28 +112,8 @@ struct AddGroupView: View {
     }
     
     
-    func uploadImageAndGetUrl(groupId: String) async -> String?{
-        guard let imageData = selectedImageData else {
-            print("No image selected")
-            return nil
-        }
-        guard let user = app.currentUser else {
-            print("No current user")
-            return nil
-        }
-        
-        // MongoDB Realm Functions 호출
-        do {
-            let key: String = "groupProfileImage/" + groupId + ".jpg";
-            
-            let base64EncodedImage = imageData.base64EncodedString()
-            let result = try await user.functions.uploadImageToAWS([AnyBSON(base64EncodedImage), AnyBSON(key)])
-            return result.stringValue
-        } catch {
-            print("Function call failed: \(error.localizedDescription)")
-            return nil
-        }
-    }
+ 
 }
+
 
 

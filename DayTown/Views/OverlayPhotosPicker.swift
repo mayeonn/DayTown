@@ -9,13 +9,13 @@ struct OverlayPhotosPicker: ViewModifier {
             .overlay(alignment: .bottomTrailing) {
                 PhotosPicker(
                     selection: $selectedItem,
-                    matching: .images,
-                    photoLibrary: .shared()) {
-                        Image(systemName: "pencil.circle")
-                            .foregroundStyle(.gray)
-                            .font(.system(size: 30))
-                            .padding(20)
-                    }
+                    matching: .images
+                ) {
+                    Image(systemName: "pencil.circle")
+                        .foregroundStyle(.gray)
+                        .font(.system(size: 30))
+                        .padding(20)
+                }
             }
     }
 }
