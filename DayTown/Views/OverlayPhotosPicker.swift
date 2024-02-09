@@ -3,6 +3,7 @@ import PhotosUI
 
 struct OverlayPhotosPicker: ViewModifier {
     @Binding var selectedItem: PhotosPickerItem?
+    let inset: CGFloat
     
     func body(content: Content) -> some View {
         content
@@ -14,7 +15,7 @@ struct OverlayPhotosPicker: ViewModifier {
                     Image(systemName: "pencil.circle")
                         .foregroundStyle(.gray)
                         .font(.system(size: 30))
-                        .padding(20)
+                        .padding(inset)
                 }
             }
     }
@@ -22,7 +23,7 @@ struct OverlayPhotosPicker: ViewModifier {
 
 extension View {
     
-    func overlayPhotosPicker(selectedItem: Binding<PhotosPickerItem?>) -> some View {
-        modifier(OverlayPhotosPicker(selectedItem: selectedItem))
+    func overlayPhotosPicker(selectedItem: Binding<PhotosPickerItem?>, inset: CGFloat) -> some View {
+        modifier(OverlayPhotosPicker(selectedItem: selectedItem, inset: inset))
     }
 }

@@ -1,5 +1,6 @@
 import SwiftUI
 import RealmSwift
+import PhotosUI
 
 struct ProfileEditView: View {
     @ObservedObject var viewModel: MyPageTabViewModel
@@ -9,7 +10,8 @@ struct ProfileEditView: View {
     
     @State private var userName: String
     @State private var userIntro: String
-    
+    @State private var selectedImage: PhotosPickerItem? = nil
+    @State private var selectedUIImage: UIImage? = nil
     
     init(viewModel: MyPageTabViewModel) {
         self.viewModel = viewModel
@@ -19,11 +21,17 @@ struct ProfileEditView: View {
     
     var body: some View {
         VStack(spacing: 8) {
-            ProfileImage(url: viewModel.currentUser?.profileImageURL, size: 100)
-                .padding(.bottom, 40)
-
-            TextFieldwithTitle(title: "이름", titleWidth: 60, text: $userName)
-            TextFieldwithTitle(title: "소개", titleWidth: 60, text: $userIntro)
+            if let uiImage = selectedUIImage {
+                CircleImageView(image: Image(uiImage: uiImage), size: 160)
+                    .overlayPhotosPicker(selectedItem: $selectedImage, inset: 12)
+            } else {
+                CircleUrlImageView(url: viewModel.currentUser?.profileImageURL, size: 160)
+                    .overlayPhotosPicker(selectedItem: $selectedImage, inset: 12)
+            }
+            Spacer()
+                .frame(height: 40)
+            TextFieldwithTitle(title: "이름", titleWidth: 40, text: $userName)
+            TextFieldwithTitle(title: "소개", titleWidth: 40, text: $userIntro)
             Spacer()
         }
         .navigationTitle(K.editProfile)
@@ -32,20 +40,48 @@ struct ProfileEditView: View {
                 Button("저장") {
                     if let userToModify = realm.object(ofType: UserModel.self, forPrimaryKey: viewModel.currentUser?._id) {
                         do {
-                            try realm.write {
-                                userToModify.name = userName
-                                userToModify.introduction = userIntro
+                            if let image = selectedUIImage {
+                                Task {
+                                    let url = await viewModel.uploadImageAndGetUrl(userId: userToModify._id, image: image)
+                                    
+                                    try realm.write {
+                                        userToModify.name = userName
+                                        userToModify.introduction = userIntro
+                                        userToModify.profileImageURL = url
+                                    }
+                                    viewModel.currentUser = userToModify
+                                }
+                            } else {
+                                try realm.write {
+                                    userToModify.name = userName
+                                    userToModify.introduction = userIntro
+                                }
+                                viewModel.currentUser = userToModify
                             }
+                            
+                            
+                            
                         } catch {
                             errorHandler.error = error
                         }
-                        viewModel.currentUser = userToModify
+                        
+                        
+                        
+                        
                     }
-                    
                     dismiss()
                 }
             }
         }
+        .onChange(of: selectedImage, { oldValue, newValue in
+            Task {
+                if let data = try? await newValue?.loadTransferable(type: Data.self) {
+                    if let image = UIImage(data: data) {
+                        selectedUIImage = image.resizeToSquare(width: 300)
+                    }
+                }
+            }
+        })
         .padding(24)
     }
 }

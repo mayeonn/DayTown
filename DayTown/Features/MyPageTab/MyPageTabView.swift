@@ -14,7 +14,7 @@ struct MyPageTabView: View {
                 VStack {
                     // UserInfoView
                     HStack(spacing: 12) {
-                        ProfileImage(url: userModel.profileImageURL, size: 100)
+                        CircleUrlImageView(url: userModel.profileImageURL, size: 100)
                         
                         VStack(alignment: .leading) {
                             Text(userModel.name)
@@ -43,20 +43,20 @@ struct MyPageTabView: View {
                     }
                 }
                 .listRowSeparator(.hidden)
-                
+                .padding(.vertical, 20)
                 
                 
                 // Email information
                 HStack {
                     Text("이메일")
                     Spacer()
-                    Text(viewModel.currentUser?.email ?? "")
+                    Text(userModel.email)
                         .foregroundStyle(.gray)
                 }
                 
-                
                 LogoutButton(myPageTabViewModel: viewModel)
-                    .customNavigationBarTitle(title: "마이페이지")
+                
+                .customNavigationBarTitle(title: "마이페이지")
             }
         }
         .listStyle(.plain)

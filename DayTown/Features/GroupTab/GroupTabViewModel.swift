@@ -24,10 +24,6 @@ class GroupTabViewModel: ObservableObject {
     }
     
     func uploadImageAndGetUrl(groupId: String, image: UIImage?) async -> String? {
-        guard let imageData = image else {
-            print("No image selected")
-            return nil
-        }
         guard let user = app.currentUser else {
             print("No current user")
             return nil
@@ -42,6 +38,9 @@ class GroupTabViewModel: ObservableObject {
                     let result = try await user.functions.uploadImageToAWS([AnyBSON(base64EncodedImage), AnyBSON(key)])
                     return result.stringValue
                 }
+            } 
+            else {
+                print("No image selected")
             }
             return nil
         } catch {

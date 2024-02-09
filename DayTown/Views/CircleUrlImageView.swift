@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ProfileImage: View {
+struct CircleUrlImageView: View {
     var url: String?
     let size: CGFloat
     

@@ -16,20 +16,18 @@ struct AddGroupView: View {
     @State private var isPrivate: Bool = false
     @State private var password: String = ""
     @State private var selectedImage: PhotosPickerItem? = nil
-    @State private var selectedImageData: Data? = nil
     @State private var selectedUIImage: UIImage? = nil
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                if let selectedImageData,
-                   let uiImage = selectedUIImage {
-                    CircleImageView(image: Image(uiImage: uiImage))
-                        .overlayPhotosPicker(selectedItem: $selectedImage)
+                if let uiImage = selectedUIImage {
+                    CircleImageView(image: Image(uiImage: uiImage), size: 250)
+                        .overlayPhotosPicker(selectedItem: $selectedImage, inset: 20)
                 } else {
-                    CircleImageView(image: Image(systemName: "person.2.circle.fill"))
+                    CircleImageView(image: Image(systemName: "person.2.circle.fill"), size: 250)
                         .opacity(0.1)
-                        .overlayPhotosPicker(selectedItem: $selectedImage)
+                        .overlayPhotosPicker(selectedItem: $selectedImage, inset: 20)
                 }
                 
                 TextFieldwithTitle(title: "그룹 이름", titleWidth: 100, text: $groupName)
@@ -87,7 +85,6 @@ struct AddGroupView: View {
             .onChange(of: selectedImage, { oldValue, newValue in
                 Task {
                     if let data = try? await newValue?.loadTransferable(type: Data.self) {
-                        selectedImageData = data
                         if let image = UIImage(data: data) {
                             selectedUIImage = image.resizeToSquare(width: 300)
                         }

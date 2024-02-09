@@ -5,7 +5,7 @@ struct UserInfoView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            ProfileImage(url: user.profileImageURL, size: 100)
+            CircleUrlImageView(url: user.profileImageURL, size: 100)
             
             VStack(alignment: .leading) {
                 Text(user.name)
